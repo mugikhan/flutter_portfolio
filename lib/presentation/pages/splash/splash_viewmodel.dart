@@ -7,5 +7,5 @@ import 'package:stacked_services/stacked_services.dart';
 
 class SplashViewModel extends BaseViewModel {
   final Timer timeToNavigate = Timer(const Duration(milliseconds: 2000),
-      () => locator<NavigationService>().replaceWith(Routes.homeView));
+      () => locator<NavigationService>().clearStackAndShow(Routes.homeView));
 }

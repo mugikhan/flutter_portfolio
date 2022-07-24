@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         darkTheme: darkTheme,
         builder: (context, regularTheme, darkTheme, themeMode) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Mugi Khan',
             navigatorKey: StackedService.navigatorKey,
             onGenerateRoute: StackedRouter().onGenerateRoute,

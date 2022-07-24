@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorPalette {
-  final Color primary = const Color(0xFFD7634B);
-  final Color onPrimary = const Color(0xFF3B120A);
-  final Color secondary = const Color(0xFFD7944B);
-  final Color onSecondary = const Color(0xFF61281C);
-  final Color tertiary = const Color(0xFF337087);
-  final Color additional = const Color(0xFF369C5C);
+  final Color primary = const Color(0xFFB73FE0);
+  final Color onPrimary = const Color(0xFF000000);
+  final Color secondary = const Color(0xFF27BAF7);
+  final Color onSecondary = const Color(0xFF000000);
+  final Color tertiary = const Color(0xFFDB20DB);
+  final Color additional = const Color(0xFF6E78E6);
 
   final Color primaryGrey = const Color(0xFFF7F7F7);
   final Color secondaryGrey = const Color(0xFFC4C4C4);
