@@ -41,25 +41,26 @@ class SplashView extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: ExactAssetImage('assets/background-work.jpg'),
-                      fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: ExactAssetImage('assets/background-work.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 6.0,
+                    sigmaY: 6.0,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
                     ),
                   ),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 6.0,
-                      sigmaY: 6.0,
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.4),
-                      ),
-                    ),
-                  )),
+                ),
+              ),
               PlayAnimation<TimelineValue<AniProps>>(
                 tween: tween,
                 duration: tween.duration,

@@ -7,7 +7,6 @@ import 'package:flutter_portfolio/presentation/pages/home/home_viewmodel.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/outline_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/scaffold/scaffold.dart';
 import 'package:flutter_portfolio/presentation/widgets/text/gradient_text.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
@@ -131,10 +130,36 @@ class TitleSection extends ViewModelWidget<HomeViewModel> {
             width: 50,
           ),
           Flexible(
-            child: SvgPicture.asset(
-              height: 300,
-              width: 300,
-              "svg/programming.svg",
+            child: ClipPolygon(
+              sides: 6,
+              borderRadius: 8.0,
+              boxShadows: [
+                PolygonBoxShadow(
+                  color: Colors.black,
+                  elevation: 6.0,
+                ),
+              ],
+              child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: ExactAssetImage('assets/background-notebook.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 0.8,
+                    sigmaY: 0.8,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -201,10 +226,36 @@ class TitleSection extends ViewModelWidget<HomeViewModel> {
           const SizedBox(
             height: 50,
           ),
-          SvgPicture.asset(
-            height: 150,
-            width: 150,
-            "svg/programming.svg",
+          ClipPolygon(
+            sides: 6,
+            borderRadius: 8.0,
+            boxShadows: [
+              PolygonBoxShadow(
+                color: Colors.black,
+                elevation: 6.0,
+              ),
+            ],
+            child: Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: ExactAssetImage('assets/background-notebook.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 0.8,
+                  sigmaY: 0.8,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
