@@ -7,18 +7,15 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        AWS_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYVFJeEVEdGRVS2V1bVVMVUFLUDdzRDRUMlFYOUpfWnI3ZHRqd294OUhqU0dDRmo3RmVsNk1sS3VvaUMyR1I5c093MXR3bjNyeWVpeGRVZS1ORlg0MTNzbWlTQmtBQUptbk4zb1NfXzZiN0pMeXM9)
-        AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYVFJS1RPc0FaN1BQWFRrNVVFVTVOTzBKN2d1NTRiM2oxdjcycWotQjhvVWdSM0ZoX3NSbTYzbVZpRGlhSDQ3c0N5ZmRudFVHNmFuMElrOUxrVDdvUWlVMllrbThPaHo2QzRJXzZoUFB1RC0ySDRsenNROVN2UkI0Smt6eE9KX0hESVQ=)
+        AWS_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYWZaR0N6N3dYU3h6OGlsN0VjNkpleGlpM3NWTTd4eWNiV1h4ZHgtWFdDRkhuUktiWkg2TFdTaHRJLXEtWktoa1Bfd1ZKeURmUUp2a2NkRlU4UV9PYVZVT2cwYkJoeEJ3bWRIa3lWRURfQnhGYWs9)
+        AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYWZaWGgtOGNiazlyX0p3U2tjdS05TVRaSEtmZDNYSFBtV1Q5NU9HTmRsOHp4TFFfSTRjTU0yVDViaFlqZUpsbHNDbFY4cF94VmJvS0k4N3hHV3dHMm83OUJSekJUQU1IdFpoSnl4bzRNMlBjS01ibXNCY2EwdFlDWWsyY2ZES1l4SUI=)
       flutter: stable
       xcode: latest
       cocoapods: default
     triggering:
       events:
-        - pull_request
+        - push
       branch_patterns:
-        - pattern: '*develop*'
-          include: true
-          source: true
         - pattern: '*main*'
           include: true
           source: false
@@ -35,6 +32,8 @@ workflows:
         7z a -r ../web.zip ./*
         cd $CM_BUILD_DIR/build/
         sudo pip3 install awscli --upgrade
+        aws configure set aws_access_key_id $AWS_ACCESS_KEY
+        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
         aws s3 sync web/ s3://flutter-portfolio/
     artifacts:
       - build/web.zip
