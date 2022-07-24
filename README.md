@@ -1,6 +1,8 @@
 # flutter_portfolio
 
-A new Flutter project.
+My portfolio :)
+
+[![Codemagic build status](https://api.codemagic.io/apps/62dd9d37e74c69c9ed87abc4/62dd9d37e74c69c9ed87abc3/status_badge.svg)](https://codemagic.io/apps/62dd9d37e74c69c9ed87abc4/62dd9d37e74c69c9ed87abc3/latest_build)
 
 ## Getting Started
 

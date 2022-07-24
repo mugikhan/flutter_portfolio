@@ -1,0 +1,46 @@
+# Automatically generated on 2022-07-24 UTC from https://codemagic.io/app/62dd9d37e74c69c9ed87abc4/settings
+# Note that this configuration is not an exact match to UI settings. Review and adjust as necessary.
+
+workflows:
+  default-workflow:
+    name: Default Workflow
+    max_build_duration: 60
+    environment:
+      vars:
+        AWS_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYWZaR0N6N3dYU3h6OGlsN0VjNkpleGlpM3NWTTd4eWNiV1h4ZHgtWFdDRkhuUktiWkg2TFdTaHRJLXEtWktoa1Bfd1ZKeURmUUp2a2NkRlU4UV9PYVZVT2cwYkJoeEJ3bWRIa3lWRURfQnhGYWs9)
+        AWS_SECRET_ACCESS_KEY: Encrypted(Z0FBQUFBQmkzYWZaWGgtOGNiazlyX0p3U2tjdS05TVRaSEtmZDNYSFBtV1Q5NU9HTmRsOHp4TFFfSTRjTU0yVDViaFlqZUpsbHNDbFY4cF94VmJvS0k4N3hHV3dHMm83OUJSekJUQU1IdFpoSnl4bzRNMlBjS01ibXNCY2EwdFlDWWsyY2ZES1l4SUI=)
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: '*main*'
+          include: true
+          source: false
+      tag_patterns:
+        - pattern: '*'
+          include: true
+    scripts:
+      - flutter packages pub get
+      - flutter config --enable-web
+      - |
+        # build web
+        flutter build web --release
+        cd build/web
+        7z a -r ../web.zip ./*
+        cd $CM_BUILD_DIR/build/
+        sudo pip3 install awscli --upgrade
+        aws configure set aws_access_key_id $AWS_ACCESS_KEY
+        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+        aws s3 sync web/ s3://flutter-portfolio/
+    artifacts:
+      - build/web.zip
+      - '*.snap'
+      - build/windows/**/*.msix
+      - flutter_drive.log
+    publishing:
+      email:
+        recipients:
+          - mugikhan@gmail.com
