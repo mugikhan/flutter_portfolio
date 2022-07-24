@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/presentation/widgets/buttons/outline_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/primary_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/transparent_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/scaffold/scaffold_viewmodel.dart';
@@ -140,6 +139,9 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
           width: 100,
           onPressed: () {},
         ),
+        const SizedBox(
+          width: 25,
+        )
       ],
     );
   }
