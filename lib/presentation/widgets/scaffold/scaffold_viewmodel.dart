@@ -6,12 +6,21 @@ import 'package:stacked_services/stacked_services.dart';
 class ScaffoldViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
+  void navigateToHome() {
+    _navigationService.clearStackAndShow(Routes.homeView);
+  }
+
+  void navigateToServices() {
+    _navigationService.navigateToServicesView();
+  }
+
   void onPopUpMenuSelected(int index) {
     switch (index) {
       case 1:
-        _navigationService.clearStackAndShow(Routes.homeView);
+        navigateToHome();
         break;
       case 2:
+        navigateToServices();
         break;
       case 3:
         break;

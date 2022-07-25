@@ -33,10 +33,7 @@ class PrimaryScaffold extends StatelessWidget {
               titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
               actions: const [AppbarActionsMobile()],
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: body,
-            ),
+            body: body,
           ),
           desktop: (BuildContext context) => Scaffold(
             appBar: AppBar(
@@ -124,11 +121,15 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
       children: <Widget>[
         TransparentTextButton(
           title: "Home",
-          onPressed: () {},
+          onPressed: () {
+            viewModel.navigateToHome();
+          },
         ),
         TransparentTextButton(
           title: "Services",
-          onPressed: () {},
+          onPressed: () {
+            viewModel.navigateToServices();
+          },
         ),
         TransparentTextButton(
           title: "Portfolio",
