@@ -11,7 +11,7 @@ class ColorPalette {
   final Color additional = const Color(0xFF6E78E6);
 
   final Color primaryGrey = const Color(0xFFF7F7F7);
-  final Color secondaryGrey = const Color(0xFFC4C4C4);
+  final Color secondaryGrey = const Color(0xFFAAAAAA);
   final Color tertiaryGrey = const Color(0xFFE0E0E0);
 
   final Color success = const Color(0xFF198754);

@@ -4,6 +4,7 @@ import 'package:flutter_portfolio/data/datasources/remote/http/http_service.dart
 import 'package:flutter_portfolio/data/datasources/remote/http/http_service_impl.dart';
 import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:flutter_portfolio/presentation/pages/home/home_view.dart';
+import 'package:flutter_portfolio/presentation/pages/services/services_view.dart';
 import 'package:flutter_portfolio/presentation/pages/splash/splash_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,6 +13,7 @@ import 'package:stacked_services/stacked_services.dart';
   routes: [
     AdaptiveRoute(page: SplashView, initial: true),
     AdaptiveRoute(page: HomeView),
+    AdaptiveRoute(page: ServicesView),
   ],
   dependencies: [
     //Stacked Services

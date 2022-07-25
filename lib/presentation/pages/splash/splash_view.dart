@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/presentation/pages/splash/splash_viewmodel.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stacked/stacked.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -37,6 +36,7 @@ class SplashView extends StatelessWidget {
             curve: Curves.easeInOut,
           );
         return Scaffold(
+          extendBody: true,
           body: Stack(
             alignment: Alignment.center,
             children: [
@@ -80,16 +80,9 @@ class SplashView extends StatelessWidget {
                 },
               ),
               Positioned(
-                top: (MediaQuery.of(context).size.height / 2) + 300,
+                top: (MediaQuery.of(context).size.height / 2) + 310,
                 child: Column(
                   children: [
-                    const SpinKitPouringHourGlassRefined(
-                      color: Colors.black,
-                      duration: Duration(milliseconds: 1500),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     AnimatedTextKit(
                       animatedTexts: [
                         ColorizeAnimatedText(

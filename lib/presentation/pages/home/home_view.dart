@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_polygon/flutter_polygon.dart';
+import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:flutter_portfolio/presentation/pages/home/home_viewmodel.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/outline_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/scaffold/scaffold.dart';
@@ -15,12 +15,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
+    return ViewModelBuilder<HomeViewModel>.nonReactive(
       builder: (context, viewModel, child) => PrimaryScaffold(
         body: ScreenTypeLayout.builder(
           mobile: (BuildContext context) => ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(top: 50),
+            padding: UIHelper.listViewPaddingMobile,
             children: const [
               TitleSection(),
               SizedBox(
@@ -29,19 +28,15 @@ class HomeView extends StatelessWidget {
               AboutSection(),
             ],
           ),
-          desktop: (BuildContext context) => Padding(
-            padding: const EdgeInsets.only(left: 350, right: 350),
-            child: ListView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(top: 50),
-              children: const [
-                TitleSection(),
-                SizedBox(
-                  height: 50,
-                ),
-                AboutSection(),
-              ],
-            ),
+          desktop: (BuildContext context) => ListView(
+            padding: UIHelper.listViewPaddingDesktop,
+            children: const [
+              TitleSection(),
+              SizedBox(
+                height: 50,
+              ),
+              AboutSection(),
+            ],
           ),
         ),
       ),
@@ -56,209 +51,183 @@ class TitleSection extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return ScreenTypeLayout.builder(
-      desktop: (BuildContext context) => Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
+        desktop: (BuildContext context) => Row(
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                GradientText(
-                  'Hi, my name is',
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFFB73FE0),
-                      Color(0xFFDB20DB),
-                      Color(0xFFB73FE0),
-                      Color(0xFF8867E8),
-                      Color(0xFF6E78E6),
-                      Color(0xFF27BAF7),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      GradientText(
+                        'Hi, my name is',
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFFB73FE0),
+                            Color(0xFFDB20DB),
+                            Color(0xFFB73FE0),
+                            Color(0xFF8867E8),
+                            Color(0xFF6E78E6),
+                            Color(0xFF27BAF7),
+                          ],
+                        ),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            'Mugi Khan.',
+                            speed: const Duration(milliseconds: 500),
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(fontWeight: FontWeight.w800),
+                            textAlign: TextAlign.left,
+                            curve: Curves.easeInOut,
+                          ),
+                        ],
+                        repeatForever: false,
+                        isRepeatingAnimation: false,
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      GradientText(
+                        "I'm a fullstack developer who has experience with mobile, web "
+                        "and backend development.",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFFB73FE0),
+                            Color(0xFFDB20DB),
+                            Color(0xFFB73FE0),
+                            Color(0xFF8867E8),
+                            Color(0xFF6E78E6),
+                            Color(0xFF27BAF7),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
                     ],
                   ),
-                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(
-                  height: 25,
+                  width: 50,
                 ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Mugi Khan.',
-                      speed: const Duration(milliseconds: 500),
-                      textStyle: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.left,
-                      curve: Curves.easeInOut,
-                    ),
-                  ],
-                  repeatForever: false,
-                  isRepeatingAnimation: false,
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                GradientText(
-                  "I'm a fullstack developer who has experience with mobile, web "
-                  "and backend development.",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.w700),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFFB73FE0),
-                      Color(0xFFDB20DB),
-                      Color(0xFFB73FE0),
-                      Color(0xFF8867E8),
-                      Color(0xFF6E78E6),
-                      Color(0xFF27BAF7),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            width: 50,
-          ),
-          Flexible(
-            child: ClipPolygon(
-              sides: 6,
-              borderRadius: 8.0,
-              boxShadows: [
-                PolygonBoxShadow(
-                  color: Colors.black,
-                  elevation: 6.0,
-                ),
-              ],
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage('assets/background-notebook.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 0.8,
-                    sigmaY: 0.8,
-                  ),
+                Flexible(
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.1),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 5, color: Colors.black, spreadRadius: 2)
+                      ],
+                    ),
+                    child: const CircleAvatar(
+                      radius: 200.0,
+                      backgroundImage:
+                          ExactAssetImage("assets/background-notebook.jpg"),
                     ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      mobile: (BuildContext context) => Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          GradientText(
-            'Hi, my name is',
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
               ],
             ),
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                'Mugi Khan.',
-                speed: const Duration(milliseconds: 500),
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
-                    .copyWith(fontWeight: FontWeight.w800),
-                textAlign: TextAlign.left,
-                curve: Curves.easeInOut,
-              ),
+        mobile: (BuildContext context) => const TitleSectionMobile());
+  }
+}
+
+class TitleSectionMobile extends ViewModelWidget<HomeViewModel> {
+  const TitleSectionMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, HomeViewModel viewModel) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        GradientText(
+          'Hi, my name is',
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFFB73FE0),
+              Color(0xFFDB20DB),
+              Color(0xFFB73FE0),
+              Color(0xFF8867E8),
+              Color(0xFF6E78E6),
+              Color(0xFF27BAF7),
             ],
-            repeatForever: false,
-            isRepeatingAnimation: false,
           ),
-          const SizedBox(
-            height: 25,
-          ),
-          GradientText(
-            "I'm a fullstack developer who has experience with mobile, web "
-            "and backend development.",
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(fontWeight: FontWeight.w700),
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
-              ],
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              'Mugi Khan.',
+              speed: const Duration(milliseconds: 500),
+              textStyle: Theme.of(context)
+                  .textTheme
+                  .displayMedium!
+                  .copyWith(fontWeight: FontWeight.w800),
+              textAlign: TextAlign.left,
+              curve: Curves.easeInOut,
             ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          ClipPolygon(
-            sides: 6,
-            borderRadius: 8.0,
-            boxShadows: [
-              PolygonBoxShadow(
-                color: Colors.black,
-                elevation: 6.0,
-              ),
+          ],
+          repeatForever: false,
+          isRepeatingAnimation: false,
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        GradientText(
+          "I'm a fullstack developer who has experience with mobile, web "
+          "and backend development.",
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFFB73FE0),
+              Color(0xFFDB20DB),
+              Color(0xFFB73FE0),
+              Color(0xFF8867E8),
+              Color(0xFF6E78E6),
+              Color(0xFF27BAF7),
             ],
-            child: Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: ExactAssetImage('assets/background-notebook.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: 0.8,
-                  sigmaY: 0.8,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                ),
-              ),
-            ),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(blurRadius: 5, color: Colors.black, spreadRadius: 2)
+            ],
+          ),
+          child: const CircleAvatar(
+            radius: 100.0,
+            backgroundImage: ExactAssetImage("assets/background-notebook.jpg"),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -342,109 +311,114 @@ class AboutSection extends ViewModelWidget<HomeViewModel> {
             width: 50,
           ),
           Flexible(
-            child: ClipPolygon(
-              sides: 6,
-              borderRadius: 8.0,
-              boxShadows: [
-                PolygonBoxShadow(
-                  color: Colors.black,
-                  elevation: 6.0,
-                ),
-              ],
-              child: Image.asset(
-                "assets/mugi.png",
-                height: 300,
-                width: 300,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(blurRadius: 5, color: Colors.black, spreadRadius: 2)
+                ],
+              ),
+              child: const CircleAvatar(
+                radius: 200.0,
+                backgroundImage: ExactAssetImage("assets/mugi.png"),
               ),
             ),
           ),
         ],
       ),
-      mobile: (BuildContext context) => Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SelectableText(
-            'About me',
-            style: Theme.of(context).textTheme.displaySmall,
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          GradientText(
-            "Hello! I'm Mugi Khan, an experienced software engineer based in "
-            "Johannesburg, South Africa.",
-            style: Theme.of(context).textTheme.titleLarge,
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          SelectableText(
-            "I have been working as a fullstack developer for the past "
-            "${getYearsSince2018()} years. I have worked in multiple environments "
-            "from startups to corporate clients. I have worked in multi-cultural teams "
-            "varying in size from 3 to 30 team members. "
-            "I love learning new technologies and frameworks, such as flutter, react "
-            "or handlebars.js. I have deployed multiple projects including this one to "
-            "Amazon Web Services (AWS) and traditional web servers. "
-            "If you are interested in working together, feel free to contact me.",
-            style: Theme.of(context).textTheme.titleMedium,
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          ClipPolygon(
-            sides: 6,
-            borderRadius: 8.0,
-            boxShadows: [
-              PolygonBoxShadow(
-                color: Colors.black,
-                elevation: 6.0,
-              ),
-            ],
-            child: Image.asset(
-              "assets/mugi.png",
-              height: 150,
-              width: 150,
-            ),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          GradientOutlineButton(
-            onPressed: () {},
-            title: "Get In Touch",
-            width: 150,
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
-              ],
-            ),
-          )
-        ],
-      ),
+      mobile: (BuildContext context) => const AboutSectionMobile(),
     );
   }
+}
 
-  String getYearsSince2018() {
-    return "${DateTime.now().year - 2018}";
+class AboutSectionMobile extends ViewModelWidget<HomeViewModel> {
+  const AboutSectionMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, HomeViewModel viewModel) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        SelectableText(
+          'About me',
+          style: Theme.of(context).textTheme.displaySmall,
+          textAlign: TextAlign.left,
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        GradientText(
+          "Hello! I'm Mugi Khan, an experienced software engineer based in "
+          "Johannesburg, South Africa.",
+          style: Theme.of(context).textTheme.titleLarge,
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFFB73FE0),
+              Color(0xFFDB20DB),
+              Color(0xFFB73FE0),
+              Color(0xFF8867E8),
+              Color(0xFF6E78E6),
+              Color(0xFF27BAF7),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        SelectableText(
+          "I have been working as a fullstack developer for the past "
+          "${getYearsSince2018()} years. I have worked in multiple environments "
+          "from startups to corporate clients. I have worked in multi-cultural teams "
+          "varying in size from 3 to 30 team members. "
+          "I love learning new technologies and frameworks, such as flutter, react "
+          "or handlebars.js. I have deployed multiple projects including this one to "
+          "Amazon Web Services (AWS) and traditional web servers. "
+          "If you are interested in working together, feel free to contact me.",
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.left,
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(blurRadius: 5, color: Colors.black, spreadRadius: 2)
+            ],
+          ),
+          child: const CircleAvatar(
+            radius: 100.0,
+            backgroundImage: ExactAssetImage("assets/mugi.png"),
+          ),
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        GradientOutlineButton(
+          onPressed: () {},
+          title: "Get In Touch",
+          width: 150,
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFFB73FE0),
+              Color(0xFFDB20DB),
+              Color(0xFFB73FE0),
+              Color(0xFF8867E8),
+              Color(0xFF6E78E6),
+              Color(0xFF27BAF7),
+            ],
+          ),
+        )
+      ],
+    );
   }
+}
+
+String getYearsSince2018() {
+  return "${DateTime.now().year - 2018}";
 }
