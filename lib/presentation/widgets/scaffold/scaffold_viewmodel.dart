@@ -14,6 +14,10 @@ class ScaffoldViewModel extends BaseViewModel {
     _navigationService.navigateToServicesView();
   }
 
+  void navigateToExperience() {
+    _navigationService.navigateToExperienceView();
+  }
+
   void onPopUpMenuSelected(int index) {
     switch (index) {
       case 1:
@@ -23,6 +27,7 @@ class ScaffoldViewModel extends BaseViewModel {
         navigateToServices();
         break;
       case 3:
+        navigateToExperience();
         break;
       case 4:
         break;

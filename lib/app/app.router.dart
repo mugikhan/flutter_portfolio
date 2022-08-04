@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../presentation/pages/experience/experience_view.dart';
 import '../presentation/pages/home/home_view.dart';
 import '../presentation/pages/services/services_view.dart';
 import '../presentation/pages/splash/splash_view.dart';
@@ -18,10 +19,12 @@ class Routes {
   static const String splashView = '/';
   static const String homeView = '/home-view';
   static const String servicesView = '/services-view';
+  static const String experienceView = '/experience-view';
   static const all = <String>{
     splashView,
     homeView,
     servicesView,
+    experienceView,
   };
 }
 
@@ -32,6 +35,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.splashView, page: SplashView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.servicesView, page: ServicesView),
+    RouteDef(Routes.experienceView, page: ExperienceView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -51,6 +55,12 @@ class StackedRouter extends RouterBase {
     ServicesView: (data) {
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => const ServicesView(),
+        settings: data,
+      );
+    },
+    ExperienceView: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const ExperienceView(),
         settings: data,
       );
     },
@@ -103,6 +113,22 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.servicesView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToExperienceView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.experienceView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,
