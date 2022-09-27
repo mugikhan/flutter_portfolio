@@ -413,7 +413,7 @@ class AboutSectionMobile extends ViewModelWidget<HomeViewModel> {
               Color(0xFF27BAF7),
             ],
           ),
-        )
+        ),
       ],
     );
   }

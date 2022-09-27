@@ -6,14 +6,13 @@ import 'package:stacked_services/stacked_services.dart';
 
 void setupSnackbarUi() {
   final service = locator<SnackbarService>();
-  final colorPalette = locator<ColorPalette>();
 
   service.registerCustomSnackbarConfig(
     variant: SnackbarType.success,
     config: SnackbarConfig(
       snackPosition: SnackPosition.TOP,
-      backgroundColor: colorPalette.success,
-      textColor: colorPalette.onSuccess,
+      backgroundColor: ColorPalette.success,
+      textColor: ColorPalette.onSuccess,
       borderRadius: 1,
       dismissDirection: DismissDirection.up,
     ),
@@ -23,8 +22,8 @@ void setupSnackbarUi() {
     variant: SnackbarType.error,
     config: SnackbarConfig(
       snackPosition: SnackPosition.TOP,
-      backgroundColor: colorPalette.error,
-      textColor: colorPalette.onError,
+      backgroundColor: ColorPalette.error,
+      textColor: ColorPalette.onError,
       borderRadius: 1,
       dismissDirection: DismissDirection.up,
     ),
@@ -34,8 +33,8 @@ void setupSnackbarUi() {
     variant: SnackbarType.info,
     config: SnackbarConfig(
       snackPosition: SnackPosition.TOP,
-      backgroundColor: colorPalette.info,
-      textColor: colorPalette.onInfo,
+      backgroundColor: ColorPalette.info,
+      textColor: ColorPalette.onInfo,
       borderRadius: 1,
       dismissDirection: DismissDirection.up,
     ),
@@ -45,8 +44,8 @@ void setupSnackbarUi() {
     variant: SnackbarType.warning,
     config: SnackbarConfig(
       snackPosition: SnackPosition.TOP,
-      backgroundColor: colorPalette.warning,
-      textColor: colorPalette.onWarning,
+      backgroundColor: ColorPalette.warning,
+      textColor: ColorPalette.onWarning,
       borderRadius: 1,
       dismissDirection: DismissDirection.up,
     ),

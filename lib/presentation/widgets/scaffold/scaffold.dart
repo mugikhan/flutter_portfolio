@@ -26,9 +26,9 @@ class PrimaryScaffold extends StatelessWidget {
             appBar: AppBar(
               leading: Image.asset(
                 "assets/logo-background.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
-              leadingWidth: 175,
+              leadingWidth: 150,
               title: title != null ? Text(title!) : Container(),
               titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
               actions: const [AppbarActionsMobile()],
@@ -39,7 +39,7 @@ class PrimaryScaffold extends StatelessWidget {
             appBar: AppBar(
               leading: Image.asset(
                 "assets/logo-background.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               leadingWidth: 175,
               title: title != null ? Text(title!) : Container(),
@@ -77,28 +77,28 @@ class AppbarActionsMobile extends ViewModelWidget<ScaffoldViewModel> {
           itemBuilder: (context) => [
             PopupMenuItem(
               value: 1,
-              child: GradientText(
+              child: Text(
                 "Home",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             PopupMenuItem(
               value: 2,
-              child: GradientText(
+              child: Text(
                 "Services",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             PopupMenuItem(
               value: 3,
-              child: GradientText(
-                "Portfolio",
+              child: Text(
+                "Experience",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             PopupMenuItem(
               value: 4,
-              child: GradientText(
+              child: Text(
                 "Resume",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
@@ -132,8 +132,10 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
           },
         ),
         TransparentTextButton(
-          title: "Portfolio",
-          onPressed: () {},
+          title: "Experience",
+          onPressed: () {
+            viewModel.navigateToExperience();
+          },
         ),
         PrimaryTextButton(
           title: "Resume",

@@ -11,8 +11,6 @@ import 'package:stacked/stacked.dart';
 class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
   ServicesViewMobile({Key? key}) : super(key: key);
 
-  final colorPalette = locator<ColorPalette>();
-
   @override
   Widget build(BuildContext context, ServicesViewModel viewModel) {
     return ListView(
@@ -29,7 +27,7 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
           style: Theme.of(context)
               .textTheme
               .bodyMedium
-              ?.copyWith(color: colorPalette.secondaryGrey),
+              ?.copyWith(color: ColorPalette.secondaryGrey),
           textAlign: TextAlign.center,
         ),
         UIHelper.verticalSpaceLarge(),

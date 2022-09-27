@@ -44,7 +44,7 @@ dependencies:
   dio: ^4.0.6
   connectivity_plus: ^2.3.5
   freezed_annotation: ^2.0.3
-  json_annotation: ^4.5.0
+  json_annotation: ^4.6.0
   stacked_themes: ^0.3.9
   google_fonts: ^3.0.1
   simple_animations: ^4.2.0
@@ -61,6 +61,8 @@ dependencies:
   shimmer: ^2.0.0
   flutter_polygon: ^0.3.0+2
   font_awesome_flutter: ^10.1.0
+  timelines: ^0.1.0
+  carousel_slider: ^4.1.1
   
 dev_dependencies:
   flutter_test:
