@@ -17,9 +17,9 @@ import '../presentation/pages/splash/splash_view.dart';
 
 class Routes {
   static const String splashView = '/';
-  static const String homeView = '/home-view';
-  static const String servicesView = '/services-view';
-  static const String experienceView = '/experience-view';
+  static const String homeView = '/home';
+  static const String servicesView = '/services';
+  static const String experienceView = '/experience';
   static const all = <String>{
     splashView,
     homeView,

@@ -13,9 +13,9 @@ import 'package:stacked_services/stacked_services.dart';
 @StackedApp(
   routes: [
     AdaptiveRoute(page: SplashView, initial: true),
-    AdaptiveRoute(page: HomeView),
-    AdaptiveRoute(page: ServicesView),
-    AdaptiveRoute(page: ExperienceView),
+    AdaptiveRoute(page: HomeView, path: '/home'),
+    AdaptiveRoute(page: ServicesView, path: '/services'),
+    AdaptiveRoute(page: ExperienceView, path: '/experience'),
   ],
   dependencies: [
     //Stacked Services
@@ -31,7 +31,6 @@ import 'package:stacked_services/stacked_services.dart';
     //UseCases
 
     //Design
-    Factory(classType: ColorPalette)
   ],
   logger: StackedLogger(),
   locatorName: 'locator',

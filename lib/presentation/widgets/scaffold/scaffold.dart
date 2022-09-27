@@ -26,9 +26,9 @@ class PrimaryScaffold extends StatelessWidget {
             appBar: AppBar(
               leading: Image.asset(
                 "assets/logo-background.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
-              leadingWidth: 175,
+              leadingWidth: 150,
               title: title != null ? Text(title!) : Container(),
               titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
               actions: const [AppbarActionsMobile()],
@@ -39,7 +39,7 @@ class PrimaryScaffold extends StatelessWidget {
             appBar: AppBar(
               leading: Image.asset(
                 "assets/logo-background.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               leadingWidth: 175,
               title: title != null ? Text(title!) : Container(),

@@ -9,9 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 
 class ServicesViewDesktop extends ViewModelWidget<ServicesViewModel> {
-  ServicesViewDesktop({Key? key}) : super(key: key);
-
-  final colorPalette = locator<ColorPalette>();
+  const ServicesViewDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ServicesViewModel viewModel) {
@@ -28,7 +26,7 @@ class ServicesViewDesktop extends ViewModelWidget<ServicesViewModel> {
           style: Theme.of(context)
               .textTheme
               .bodyMedium
-              ?.copyWith(color: colorPalette.secondaryGrey),
+              ?.copyWith(color: ColorPalette.secondaryGrey),
         ),
         UIHelper.verticalSpaceLarge(),
         Row(

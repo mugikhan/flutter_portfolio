@@ -21,6 +21,7 @@ Employment _$EmploymentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Employment {
   String get institute => throw _privateConstructorUsedError;
+  String get position => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   Map<String, String> get skills => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $EmploymentCopyWith<$Res> {
       _$EmploymentCopyWithImpl<$Res>;
   $Res call(
       {String institute,
+      String position,
       String duration,
       String description,
       Map<String, String> skills});
@@ -54,6 +56,7 @@ class _$EmploymentCopyWithImpl<$Res> implements $EmploymentCopyWith<$Res> {
   @override
   $Res call({
     Object? institute = freezed,
+    Object? position = freezed,
     Object? duration = freezed,
     Object? description = freezed,
     Object? skills = freezed,
@@ -62,6 +65,10 @@ class _$EmploymentCopyWithImpl<$Res> implements $EmploymentCopyWith<$Res> {
       institute: institute == freezed
           ? _value.institute
           : institute // ignore: cast_nullable_to_non_nullable
+              as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as String,
       duration: duration == freezed
           ? _value.duration
@@ -88,6 +95,7 @@ abstract class _$$_EmploymentCopyWith<$Res>
   @override
   $Res call(
       {String institute,
+      String position,
       String duration,
       String description,
       Map<String, String> skills});
@@ -106,6 +114,7 @@ class __$$_EmploymentCopyWithImpl<$Res> extends _$EmploymentCopyWithImpl<$Res>
   @override
   $Res call({
     Object? institute = freezed,
+    Object? position = freezed,
     Object? duration = freezed,
     Object? description = freezed,
     Object? skills = freezed,
@@ -114,6 +123,10 @@ class __$$_EmploymentCopyWithImpl<$Res> extends _$EmploymentCopyWithImpl<$Res>
       institute: institute == freezed
           ? _value.institute
           : institute // ignore: cast_nullable_to_non_nullable
+              as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as String,
       duration: duration == freezed
           ? _value.duration
@@ -136,6 +149,7 @@ class __$$_EmploymentCopyWithImpl<$Res> extends _$EmploymentCopyWithImpl<$Res>
 class _$_Employment implements _Employment {
   const _$_Employment(
       {required this.institute,
+      required this.position,
       required this.duration,
       required this.description,
       required final Map<String, String> skills})
@@ -146,6 +160,8 @@ class _$_Employment implements _Employment {
 
   @override
   final String institute;
+  @override
+  final String position;
   @override
   final String duration;
   @override
@@ -159,7 +175,7 @@ class _$_Employment implements _Employment {
 
   @override
   String toString() {
-    return 'Employment(institute: $institute, duration: $duration, description: $description, skills: $skills)';
+    return 'Employment(institute: $institute, position: $position, duration: $duration, description: $description, skills: $skills)';
   }
 
   @override
@@ -168,6 +184,7 @@ class _$_Employment implements _Employment {
         (other.runtimeType == runtimeType &&
             other is _$_Employment &&
             const DeepCollectionEquality().equals(other.institute, institute) &&
+            const DeepCollectionEquality().equals(other.position, position) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -179,6 +196,7 @@ class _$_Employment implements _Employment {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(institute),
+      const DeepCollectionEquality().hash(position),
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(_skills));
@@ -199,6 +217,7 @@ class _$_Employment implements _Employment {
 abstract class _Employment implements Employment {
   const factory _Employment(
       {required final String institute,
+      required final String position,
       required final String duration,
       required final String description,
       required final Map<String, String> skills}) = _$_Employment;
@@ -208,6 +227,8 @@ abstract class _Employment implements Employment {
 
   @override
   String get institute;
+  @override
+  String get position;
   @override
   String get duration;
   @override

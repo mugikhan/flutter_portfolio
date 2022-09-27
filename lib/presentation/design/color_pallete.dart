@@ -3,60 +3,60 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorPalette {
-  final Color primary = const Color(0xFFB73FE0);
-  final Color onPrimary = const Color(0xFF000000);
-  final Color secondary = const Color(0xFF27BAF7);
-  final Color onSecondary = const Color(0xFF000000);
-  final Color tertiary = const Color(0xFFDB20DB);
-  final Color additional = const Color(0xFF6E78E6);
+  static const Color primary = Color(0xFFB73FE0);
+  static const Color onPrimary = Color(0xFF000000);
+  static const Color secondary = Color(0xFF27BAF7);
+  static const Color onSecondary = Color(0xFF000000);
+  static const Color tertiary = Color(0xFFDB20DB);
+  static const Color additional = Color(0xFF6E78E6);
 
-  final Color primaryGrey = const Color(0xFFF7F7F7);
-  final Color secondaryGrey = const Color(0xFFAAAAAA);
-  final Color tertiaryGrey = const Color(0xFFE0E0E0);
+  static const Color primaryGrey = Color(0xFFF7F7F7);
+  static const Color secondaryGrey = Color(0xFFAAAAAA);
+  static const Color tertiaryGrey = Color(0xFFE0E0E0);
 
-  final Color success = const Color(0xFF198754);
-  final Color onSuccess = const Color(0xFFFFFFFF);
-  final Color error = const Color(0xFFDC3545);
-  final Color onError = const Color(0xFFFFFFFF);
-  final Color info = const Color(0xFF0DCAF0);
-  final Color onInfo = const Color(0xFF000000);
-  final Color warning = const Color(0xFFFFC107);
-  final Color onWarning = const Color(0xFF000000);
+  static const Color success = Color(0xFF198754);
+  static const Color onSuccess = Color(0xFFFFFFFF);
+  static const Color error = Color(0xFFDC3545);
+  static const Color onError = Color(0xFFFFFFFF);
+  static const Color info = Color(0xFF0DCAF0);
+  static const Color onInfo = Color(0xFF000000);
+  static const Color warning = Color(0xFFFFC107);
+  static const Color onWarning = Color(0xFF000000);
 
-  final Color background = const Color(0xFFFFFFFF);
-  final Color onBackground = const Color(0xFF595959);
+  static const Color background = Color(0xFFFFFFFF);
+  static const Color onBackground = Color(0xFF595959);
 
-  final Color surface = const Color(0xFFFFFFFF);
-  final Color onSurface = const Color(0xFF595959);
+  static const Color surface = Color(0xFFFFFFFF);
+  static const Color onSurface = Color(0xFF595959);
 
-  final Color primaryDark = const Color(0xFF000000);
-  final Color secondaryDark = const Color(0xFF2F2F2F);
+  static const Color primaryDark = Color(0xFF000000);
+  static const Color secondaryDark = Color(0xFF2F2F2F);
 
-  final Color primaryTextLight = const Color(0xFF000000);
-  final Color secondaryTextLight = const Color(0xFF000000).withOpacity(0.8);
+  static const Color primaryTextLight = Color(0xFF000000);
+  static Color secondaryTextLight = const Color(0xFF000000).withOpacity(0.8);
 
-  final Color primaryTextDark = const Color(0xFFFFFFFF);
-  final Color secondaryTextDark = const Color(0xFFFFFFFF).withOpacity(0.8);
+  static const Color primaryTextDark = Color(0xFFFFFFFF);
+  static Color secondaryTextDark = const Color(0xFFFFFFFF).withOpacity(0.8);
 
-  final Color primaryButtonLight = const Color(0xFFD7634B);
-  final Color primaryButtonActiveLight = const Color(0xFFC4533C);
-  final Color secondaryButtonLight = const Color(0xFFD7944B);
-  final Color secondaryActiveButtonLight = const Color(0xFFA46820);
+  static const Color primaryButtonLight = Color(0xFFD7634B);
+  static const Color primaryButtonActiveLight = Color(0xFFC4533C);
+  static const Color secondaryButtonLight = Color(0xFFD7944B);
+  static const Color secondaryActiveButtonLight = Color(0xFFA46820);
 
-  final Color primaryButtonTextLight = const Color(0xFFFFFFFF);
-  final Color secondaryButtonTextLight = const Color(0xFFFFFFFF);
+  static const Color primaryButtonTextLight = Color(0xFFFFFFFF);
+  static const Color secondaryButtonTextLight = Color(0xFFFFFFFF);
 
-  final Color primaryButtonTextDark = const Color(0xFF000000);
-  final Color secondaryButtonTextDark =
+  static const Color primaryButtonTextDark = Color(0xFF000000);
+  static Color secondaryButtonTextDark =
       const Color(0xFF000000).withOpacity(0.8);
 
-  final Color primaryButtonDisabledLight = const Color(0xFFC7C7C7);
-  final Color secondaryButtonDisabledLight = const Color(0xFFC7C7C7);
+  static const Color primaryButtonDisabledLight = Color(0xFFC7C7C7);
+  static const Color secondaryButtonDisabledLight = Color(0xFFC7C7C7);
 
-  final Color primaryIconLight = const Color(0xFF000000);
-  final Color primaryIconDark = const Color(0xFFFFFFFF);
-  final Color secondaryIconLight = const Color(0xFF717171);
-  final Color secondaryIconDark = const Color(0xFF717171);
+  static const Color primaryIconLight = Color(0xFF000000);
+  static const Color primaryIconDark = Color(0xFFFFFFFF);
+  static const Color secondaryIconLight = Color(0xFF717171);
+  static const Color secondaryIconDark = Color(0xFF717171);
 }
 
 class ColorShader {
