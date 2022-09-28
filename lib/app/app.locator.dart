@@ -13,6 +13,7 @@ import '../data/datasources/remote/api/api_service.dart';
 import '../data/datasources/remote/api/api_service_impl.dart';
 import '../data/datasources/remote/http/http_service.dart';
 import '../data/datasources/remote/http/http_service_impl.dart';
+import '../data/datasources/remote/recaptcha/recaptcha_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -29,4 +30,5 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton<HttpService>(() => HttpServiceImpl());
   locator.registerLazySingleton<ApiService>(() => ApiServiceImpl());
+  locator.registerLazySingleton(() => RecaptchaService());
 }

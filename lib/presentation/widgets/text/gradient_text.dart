@@ -28,7 +28,7 @@ class GradientText extends StatelessWidget {
                 Color(0xFF27BAF7),
               ],
             ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
-      child: SelectableText(
+      child: Text(
         text,
         style: style,
         textAlign: textAlign,

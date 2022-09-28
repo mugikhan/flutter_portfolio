@@ -6,10 +6,12 @@
 
 // ignore_for_file: public_member_api_docs, unused_import, non_constant_identifier_names
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../presentation/pages/contact/contact_view.dart';
 import '../presentation/pages/experience/experience_view.dart';
 import '../presentation/pages/home/home_view.dart';
 import '../presentation/pages/services/services_view.dart';
@@ -20,11 +22,13 @@ class Routes {
   static const String homeView = '/home';
   static const String servicesView = '/services';
   static const String experienceView = '/experience';
+  static const String contactView = '/contact';
   static const all = <String>{
     splashView,
     homeView,
     servicesView,
     experienceView,
+    contactView,
   };
 }
 
@@ -36,6 +40,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.servicesView, page: ServicesView),
     RouteDef(Routes.experienceView, page: ExperienceView),
+    RouteDef(Routes.contactView, page: ContactView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -64,7 +69,26 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
+    ContactView: (data) {
+      var args = data.getArgs<ContactViewArguments>(
+        orElse: () => ContactViewArguments(),
+      );
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => ContactView(key: args.key),
+        settings: data,
+      );
+    },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// ContactView arguments holder class
+class ContactViewArguments {
+  final Key? key;
+  ContactViewArguments({this.key});
 }
 
 /// ************************************************************************
@@ -129,6 +153,24 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.experienceView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToContactView({
+    Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.contactView,
+      arguments: ContactViewArguments(key: key),
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

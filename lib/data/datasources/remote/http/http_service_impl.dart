@@ -45,17 +45,20 @@ class HttpServiceImpl implements HttpService {
   }
 
   @override
-  Future<dynamic> postHttp(String url, dynamic body,
-      {Map<String, String>? headers}) async {
+  Future<dynamic> postHttp(
+    String url, {
+    required dynamic body,
+    Map<String, String>? headers,
+  }) async {
     Response response;
 
     _log.i('Sending $body to $url');
 
     try {
-      final fullRoute = Uri.encodeFull('$url');
+      final fullRoute = Uri.encodeFull(url);
       response = await dio.post(
         fullRoute,
-        data: json.encode(body),
+        data: body,
         // onSendProgress: network_utils.showLoadingProgress,
         // onReceiveProgress: network_utils.showLoadingProgress,
         options: Options(

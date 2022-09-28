@@ -63,6 +63,8 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   timelines: ^0.1.0
   carousel_slider: ^4.1.1
+  string_validator: ^0.3.0
+  g_recaptcha_v3: ^0.0.5
   
 dev_dependencies:
   flutter_test:
