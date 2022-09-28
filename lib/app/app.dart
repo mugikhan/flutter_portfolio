@@ -2,7 +2,8 @@ import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service_impl.dart';
 import 'package:flutter_portfolio/data/datasources/remote/http/http_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/http/http_service_impl.dart';
-import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
+import 'package:flutter_portfolio/data/datasources/remote/recaptcha/recaptcha_service.dart';
+import 'package:flutter_portfolio/presentation/pages/contact/contact_view.dart';
 import 'package:flutter_portfolio/presentation/pages/experience/experience_view.dart';
 import 'package:flutter_portfolio/presentation/pages/home/home_view.dart';
 import 'package:flutter_portfolio/presentation/pages/services/services_view.dart';
@@ -16,6 +17,7 @@ import 'package:stacked_services/stacked_services.dart';
     AdaptiveRoute(page: HomeView, path: '/home'),
     AdaptiveRoute(page: ServicesView, path: '/services'),
     AdaptiveRoute(page: ExperienceView, path: '/experience'),
+    AdaptiveRoute(page: ContactView, path: '/contact'),
   ],
   dependencies: [
     //Stacked Services
@@ -26,6 +28,7 @@ import 'package:stacked_services/stacked_services.dart';
     //Services
     LazySingleton(classType: HttpServiceImpl, asType: HttpService),
     LazySingleton(classType: ApiServiceImpl, asType: ApiService),
+    LazySingleton(classType: RecaptchaService),
     //Repositories
 
     //UseCases

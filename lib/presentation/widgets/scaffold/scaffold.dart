@@ -99,6 +99,13 @@ class AppbarActionsMobile extends ViewModelWidget<ScaffoldViewModel> {
             PopupMenuItem(
               value: 4,
               child: Text(
+                "Contact",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            PopupMenuItem(
+              value: 5,
+              child: Text(
                 "Resume",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
@@ -135,6 +142,12 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
           title: "Experience",
           onPressed: () {
             viewModel.navigateToExperience();
+          },
+        ),
+        TransparentTextButton(
+          title: "Contact",
+          onPressed: () {
+            viewModel.navigateToContact();
           },
         ),
         PrimaryTextButton(

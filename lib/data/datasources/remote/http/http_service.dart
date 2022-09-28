@@ -11,8 +11,11 @@ abstract class HttpService {
   /// - if successful: returns decoded json data
   ///
   /// - throws `NetworkException` if POST request fails
-  Future<dynamic> postHttp(String url, dynamic body,
-      {Map<String, String> headers});
+  Future<dynamic> postHttp(
+    String url, {
+    required dynamic body,
+    Map<String, String>? headers,
+  });
 
   /// Send DELETE request to endpoint/[processEndpoint] and return the `response`
   /// - if successful: returns decoded json data

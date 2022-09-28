@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/data/models/employment/employment.dart';
 import 'package:flutter_portfolio/data/models/project/project.dart';
+import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:flutter_portfolio/presentation/pages/experience/experience_viewmodel.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/outline_button.dart';
@@ -42,18 +43,19 @@ class ExperienceViewDesktop extends ViewModelWidget<ExperienceViewModel> {
                   final Employment employment =
                       EmploymentConstants.employmentData[index];
                   return Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Flexible(
-                            flex: 0,
-                            child: TitleSection(
-                              institute: employment.institute,
-                              duration: employment.duration,
-                            )),
+                          flex: 0,
+                          child: TitleSection(
+                            institute: employment.institute,
+                            duration: employment.duration,
+                          ),
+                        ),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(12),
@@ -195,13 +197,26 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
   @override
   Widget build(BuildContext context, ExperienceViewModel viewModel) {
     return CarouselSlider.builder(
-      options: CarouselOptions(height: 300.0),
+      options: CarouselOptions(
+        height: 350.0,
+        padEnds: true,
+      ),
       itemCount: ProjectConstants.projects.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
         Project project = ProjectConstants.projects[itemIndex];
         return Container(
-          height: 200,
-          margin: const EdgeInsets.only(bottom: 20),
+          height: 250,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: ColorPalette.primary,
+              )),
+          margin: const EdgeInsets.only(
+            bottom: 20,
+            right: 20,
+            left: 20,
+          ),
+          padding: const EdgeInsets.all(30),
           child: Row(
             children: [
               Column(
@@ -214,28 +229,34 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                   ),
                 ],
               ),
-              UIHelper.horizontalSpaceMedium(),
+              UIHelper.horizontalSpaceLarge(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    project.title,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  Flexible(
+                    child: Text(
+                      project.title,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
                   ),
                   UIHelper.verticalSpaceMedium(),
-                  Text(
-                    project.description,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  Flexible(
+                    child: Text(
+                      project.description,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
                   ),
                   UIHelper.verticalSpaceMedium(),
-                  Text(
-                    "Technologies used",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.bold),
+                  Flexible(
+                    child: Text(
+                      "Technologies used",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
                   ),
                   UIHelper.verticalSpaceSmall(),
                   TechnologiesSection(
@@ -248,16 +269,6 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                     },
                     title: project.buttonText ?? "Coming soon",
                     width: 150,
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color(0xFFB73FE0),
-                        Color(0xFFDB20DB),
-                        Color(0xFFB73FE0),
-                        Color(0xFF8867E8),
-                        Color(0xFF6E78E6),
-                        Color(0xFF27BAF7),
-                      ],
-                    ),
                   ),
                 ],
               )
