@@ -290,7 +290,9 @@ class AboutSection extends ViewModelWidget<HomeViewModel> {
                   height: 25,
                 ),
                 GradientOutlineButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    viewModel.navigateToContact();
+                  },
                   title: "Get In Touch",
                   width: 150,
                   gradient: const LinearGradient(
@@ -400,7 +402,9 @@ class AboutSectionMobile extends ViewModelWidget<HomeViewModel> {
           height: 25,
         ),
         GradientOutlineButton(
-          onPressed: () {},
+          onPressed: () {
+            viewModel.navigateToContact();
+          },
           title: "Get In Touch",
           width: 150,
           gradient: const LinearGradient(

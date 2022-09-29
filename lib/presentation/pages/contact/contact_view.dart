@@ -56,30 +56,32 @@ class ContactView extends StatelessWidget with $ContactView {
           mobile: (BuildContext context) => Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Flexible(
-                  child: Column(
-                    children: [
-                      Flexible(
-                        child: CustomTextfield(
-                          textEditingController: nameController,
-                          focusNode: nameFocusNode,
-                          hintText: "Name",
-                          title: "Your name",
-                          validationMessage: viewModel.nameValidationMessage,
-                        ),
-                      ),
-                      UIHelper.verticalSpaceMedium(),
-                      Flexible(
-                        child: CustomTextfield(
-                          textEditingController: emailController,
-                          focusNode: emailFocusNode,
-                          hintText: "Email",
-                          title: "Your email",
-                          validationMessage: viewModel.emailValidationMessage,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    "Get in touch 👋",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
+                UIHelper.verticalSpaceMedium(),
+                Flexible(
+                  child: CustomTextfield(
+                    textEditingController: nameController,
+                    focusNode: nameFocusNode,
+                    hintText: "Name",
+                    title: "Your name",
+                    validationMessage: viewModel.nameValidationMessage,
+                  ),
+                ),
+                UIHelper.verticalSpaceMedium(),
+                Flexible(
+                  child: CustomTextfield(
+                    textEditingController: emailController,
+                    focusNode: emailFocusNode,
+                    hintText: "Email",
+                    title: "Your email",
+                    validationMessage: viewModel.emailValidationMessage,
                   ),
                 ),
                 UIHelper.verticalSpaceMedium(),
@@ -118,7 +120,7 @@ class ContactView extends StatelessWidget with $ContactView {
                 Row(
                   children: [
                     Expanded(
-                      child: CustomTextfield(
+                      child: CustomTextArea(
                         textEditingController: messageController,
                         focusNode: messageFocusNode,
                         hintText: "Let me know a little about your project...",
@@ -151,6 +153,13 @@ class ContactView extends StatelessWidget with $ContactView {
             ),
             child: Column(
               children: [
+                Flexible(
+                  child: Text(
+                    "Get in touch 👋",
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                ),
+                UIHelper.verticalSpaceMedium(),
                 Row(
                   children: [
                     Flexible(
@@ -206,7 +215,7 @@ class ContactView extends StatelessWidget with $ContactView {
                 Row(
                   children: [
                     Expanded(
-                      child: CustomTextfield(
+                      child: CustomTextArea(
                         textEditingController: messageController,
                         focusNode: messageFocusNode,
                         hintText: "Let me know a little about your project...",
