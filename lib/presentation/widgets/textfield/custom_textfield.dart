@@ -31,6 +31,77 @@ class CustomTextfield extends StatelessWidget {
     return ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: maxWidth,
+          maxHeight: 100,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            UIHelper.verticalSpaceSmall(),
+            Expanded(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  enabled: true,
+                  border: const OutlineInputBorder(),
+                  hintText: hintText,
+                ),
+                controller: textEditingController,
+                keyboardType: keyboardType,
+                focusNode: focusNode,
+                obscureText: obscureText,
+                maxLines: maxLines,
+              ),
+            ),
+            validationMessage != null
+                ? Flexible(
+                    flex: 0,
+                    child: Text(
+                      validationMessage!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: ColorPalette.error),
+                    ),
+                  )
+                : Container()
+          ],
+        ));
+  }
+}
+
+class CustomTextArea extends StatelessWidget {
+  const CustomTextArea({
+    Key? key,
+    required this.textEditingController,
+    required this.focusNode,
+    this.keyboardType = TextInputType.text,
+    required this.hintText,
+    this.maxWidth = double.infinity,
+    this.obscureText = false,
+    this.maxLines,
+    required this.title,
+    this.validationMessage,
+  }) : super(key: key);
+
+  final TextEditingController textEditingController;
+  final FocusNode focusNode;
+  final TextInputType keyboardType;
+  final String hintText;
+  final double maxWidth;
+  final bool obscureText;
+  final int? maxLines;
+  final String title;
+  final String? validationMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: maxWidth,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,12 +124,15 @@ class CustomTextfield extends StatelessWidget {
               maxLines: maxLines,
             ),
             validationMessage != null
-                ? Text(
-                    validationMessage!,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: ColorPalette.error),
+                ? Flexible(
+                    flex: 0,
+                    child: Text(
+                      validationMessage!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: ColorPalette.error),
+                    ),
                   )
                 : Container()
           ],

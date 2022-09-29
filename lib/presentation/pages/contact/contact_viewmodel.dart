@@ -2,6 +2,7 @@ import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/recaptcha/recaptcha_service.dart';
 import 'package:flutter_portfolio/data/models/email/email.dart';
+import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -33,6 +34,8 @@ class ContactViewModel extends FormViewModel {
         description: 'Bots not allowed!',
         dialogPlatform: DialogPlatform.Material,
         barrierDismissible: true,
+        buttonTitleColor: ColorPalette.onPrimary,
+        buttonTitle: "Ok",
       );
     }
   }
