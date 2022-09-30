@@ -28,10 +28,10 @@ jobs:
       - run: flutter pub get
       - run: flutter pub run build_runner build --delete-conflicting-outputs
       - name: Add recaptcha keys
+        run: flutter build web --release --dart-define SITE_KEY=$SITE_KEY --dart-define SECRET_KEY=$SECRET_KEY
         env:
           SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
           SECRET_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
-        run: flutter build web --release --dart-define SITE_KEY='$SITE_KEY' --dart-define SECRET_KEY='$SECRET_KEY'
       - name: Sync to S3
       - uses: jakejarvis/s3-sync-action@master
         with:
