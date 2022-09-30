@@ -4,15 +4,12 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  
 env:
   SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
   SECRET_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout source code
       - uses: actions/checkout@v3
