@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - name: Setup Flutter
-      - uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.3.2'
           channel: 'stable'
@@ -28,7 +28,7 @@ jobs:
           SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
           SECRET_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
       - name: Sync to S3
-      - uses: jakejarvis/s3-sync-action@master
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
