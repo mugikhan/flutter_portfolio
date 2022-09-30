@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-env:
-  SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
-  SECRET_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,6 +24,9 @@ jobs:
           flutter pub get
           flutter pub run build_runner build --delete-conflicting-outputs
           flutter build web --release --dart-define SITE_KEY=$SITE_KEY --dart-define SECRET_KEY=$SECRET_KEY
+        env:
+          SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
+          SECRET_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
       - name: Sync to S3
       - uses: jakejarvis/s3-sync-action@master
         with:
