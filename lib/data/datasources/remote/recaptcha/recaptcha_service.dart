@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_portfolio/app/app.locator.dart';
-import 'package:flutter_portfolio/data/config/config.dart';
 import 'package:flutter_portfolio/data/datasources/remote/http/http_service.dart';
 import 'package:flutter_portfolio/data/models/recaptcha/recaptcha_response.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
@@ -13,13 +12,16 @@ class RecaptchaService {
   String _token = '';
 
   /// Loads the `Google reCAPTCHA V3` API.
-  Future<void> initiate() async => await GRecaptchaV3.ready(Config.siteKey);
+  Future<void> initiate() async {
+    String siteKey = const String.fromEnvironment('SITE_KEY');
+    await GRecaptchaV3.ready(siteKey);
+  }
 
   /// Checks whether the form submission is done by a human or bot.
   Future<bool> isNotABot() async {
     var verificationResponse = await _getVerificationResponse();
-    var _score = verificationResponse?.score ?? 0.0;
-    return _score >= 0.5 && _score < 1 ? true : false;
+    double score = verificationResponse?.score ?? 0.0;
+    return score >= 0.5 && score < 1 ? true : false;
   }
 
   /// Verifies the client's response using HTTP POST method.
@@ -34,12 +36,12 @@ class RecaptchaService {
       try {
         /// Holds the body parameter for the HTTP request.
         final bodyParameters = {
-          'secret': Config.secretKey,
+          'secret': const String.fromEnvironment('SECRET_KEY'),
           'response': _token,
         };
 
         var response = await _httpService.postHttp(
-          Config.verificationURL,
+          'https://www.google.com/recaptcha/api/siteverify',
           body: bodyParameters,
           headers: {'Access-Control-Allow-Origin': '*'},
         );
