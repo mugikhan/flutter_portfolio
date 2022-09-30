@@ -28,10 +28,6 @@ jobs:
       - run: flutter pub get
       - run: flutter pub run build_runner build --delete-conflicting-outputs
       - run: flutter build web --release
-      - name: Zip web build
-        run: |
-          cd ./build/web
-          7z a -r ../web.zip ./*
       - name: Sync to S3
       - uses: jakejarvis/s3-sync-action@master
         with:
