@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
 import 'package:flutter_portfolio/presentation/pages/splash/splash_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -43,9 +44,10 @@ class SplashView extends StatelessWidget {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: ExactAssetImage('assets/background-work.jpg'),
+                    image: ExactAssetImage(
+                        webAssetImage('assets/background-work.jpg')),
                     fit: BoxFit.cover,
                   ),
                 ),

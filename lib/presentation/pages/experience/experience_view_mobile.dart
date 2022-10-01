@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/data/models/employment/employment.dart';
 import 'package:flutter_portfolio/data/models/project/project.dart';
+import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
 import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:flutter_portfolio/presentation/pages/experience/experience_viewmodel.dart';
@@ -223,7 +224,7 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    project.appPhotos,
+                    webAssetImage(project.appPhotos),
                     width: 70,
                     height: 70,
                   ),
@@ -307,7 +308,7 @@ class TechnologiesSection extends ViewModelWidget<ExperienceViewModel> {
         Container(
           margin: const EdgeInsets.all(8.0),
           width: 25,
-          child: Image.asset("assets/${technology.value}"),
+          child: Image.asset(webAssetImage("assets/${technology.value}")),
         ),
       );
     }

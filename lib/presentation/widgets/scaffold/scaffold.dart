@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/primary_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/transparent_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/scaffold/scaffold_viewmodel.dart';
@@ -25,7 +26,7 @@ class PrimaryScaffold extends StatelessWidget {
           mobile: (BuildContext context) => Scaffold(
             appBar: AppBar(
               leading: Image.asset(
-                "assets/logo-background.png",
+                webAssetImage("assets/logo-background.png"),
                 fit: BoxFit.contain,
               ),
               leadingWidth: 150,
@@ -38,7 +39,7 @@ class PrimaryScaffold extends StatelessWidget {
           desktop: (BuildContext context) => Scaffold(
             appBar: AppBar(
               leading: Image.asset(
-                "assets/logo-background.png",
+                webAssetImage("assets/logo-background.png"),
                 fit: BoxFit.contain,
               ),
               leadingWidth: 175,
