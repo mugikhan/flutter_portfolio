@@ -10,11 +10,11 @@ class RecaptchaService {
 
   /// Holds the response token.
   String _token = '';
+  final String _siteKey = const String.fromEnvironment('SITE_KEY');
 
   /// Loads the `Google reCAPTCHA V3` API.
   Future<void> initiate() async {
-    String siteKey = const String.fromEnvironment('SITE_KEY');
-    await GRecaptchaV3.ready(siteKey);
+    await GRecaptchaV3.ready(_siteKey);
   }
 
   /// Checks whether the form submission is done by a human or bot.
@@ -28,6 +28,7 @@ class RecaptchaService {
   ///
   /// For more information, read the `Google reCAPTCHA V3` [server side docs](https://developers.google.com/recaptcha/docs/verify#api_request)
   Future<RecaptchaResponse?> _getVerificationResponse() async {
+    await GRecaptchaV3.ready(_siteKey);
     _token = await GRecaptchaV3.execute('submit') ?? '';
 
     RecaptchaResponse? recaptchaResponse;

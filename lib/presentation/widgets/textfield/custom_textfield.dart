@@ -47,6 +47,11 @@ class CustomTextfield extends StatelessWidget {
                 decoration: InputDecoration(
                   enabled: true,
                   border: const OutlineInputBorder(),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: ColorPalette.tertiaryGrey,
+                    ),
+                  ),
                   hintText: hintText,
                 ),
                 controller: textEditingController,
@@ -115,6 +120,11 @@ class CustomTextArea extends StatelessWidget {
               decoration: InputDecoration(
                 enabled: true,
                 border: const OutlineInputBorder(),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: ColorPalette.tertiaryGrey,
+                  ),
+                ),
                 hintText: hintText,
               ),
               controller: textEditingController,
