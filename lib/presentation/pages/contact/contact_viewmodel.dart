@@ -31,7 +31,7 @@ class ContactViewModel extends FormViewModel {
       Email email = Email(
         email: emailValue!,
         name: nameValue!,
-        service: serviceValue!,
+        service: ServiceValueToTitleMap[serviceValue!]!,
         message: messageValue!,
       );
       await apiService.sendEmail(email);
