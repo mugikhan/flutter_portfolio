@@ -251,120 +251,119 @@ class ContactViewMobile extends ViewModelWidget<ContactViewModel> {
 
   @override
   Widget build(BuildContext context, ContactViewModel viewModel) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Flexible(
-            child: Text(
-              "Get in touch 👋",
-              style: Theme.of(context).textTheme.titleLarge,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              child: Text(
+                "Get in touch 👋",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
-          ),
-          UIHelper.verticalSpaceMedium(),
-          Flexible(
-            child: CustomTextfield(
+            UIHelper.verticalSpaceMedium(),
+            CustomTextfield(
               textEditingController: nameController,
               focusNode: nameFocusNode,
               hintText: "Name",
               title: "Your name",
               validationMessage: viewModel.nameValidationMessage,
             ),
-          ),
-          UIHelper.verticalSpaceMedium(),
-          Flexible(
-            child: CustomTextfield(
+            UIHelper.verticalSpaceMedium(),
+            CustomTextfield(
               textEditingController: emailController,
               focusNode: emailFocusNode,
               hintText: "Email",
               title: "Your email",
               validationMessage: viewModel.emailValidationMessage,
             ),
-          ),
-          UIHelper.verticalSpaceMedium(),
-          DropdownButtonFormField<String>(
-            decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorPalette.tertiaryGrey,
-                ),
-              ),
-              border: const OutlineInputBorder(),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorPalette.tertiaryGrey,
-                ),
-              ),
-              filled: true,
-              labelText: 'What are you interested in?',
-              labelStyle: Theme.of(context).textTheme.bodyLarge,
-              focusColor: Colors.white,
-              fillColor: ColorPalette.surface,
-            ),
-            dropdownColor: Colors.white,
-            elevation: 1,
-            icon: const Icon(
-              CupertinoIcons.chevron_down,
-              size: 18,
-            ),
-            style: Theme.of(context).textTheme.bodyMedium,
-            value: viewModel.serviceValue,
-            onChanged: (value) {
-              viewModel.setService(value!);
-            },
-            items: ServiceValueToTitleMap.keys
-                .map(
-                  (value) => DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(ServiceValueToTitleMap[value]!),
-                  ),
-                )
-                .toList(),
-          ),
-          UIHelper.verticalSpaceSmall(),
-          Row(
-            children: [
-              Expanded(
-                child: CustomTextArea(
-                  textEditingController: messageController,
-                  focusNode: messageFocusNode,
-                  hintText: "Let me know a little about your project...",
-                  maxLines: 8,
-                  title: "Message",
-                  validationMessage: viewModel.messageValidationMessage,
-                ),
-              ),
-            ],
-          ),
-          UIHelper.verticalSpaceSmall(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(
-                height: 25,
-                child: Opacity(
-                  opacity: 0,
-                  child: Checkbox(
-                    value: viewModel.isHoneypotChecked,
-                    onChanged: (value) {
-                      viewModel.onChangehoneypotCheck(value);
-                    },
+            UIHelper.verticalSpaceMedium(),
+            DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: ColorPalette.tertiaryGrey,
                   ),
                 ),
+                border: const OutlineInputBorder(),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: ColorPalette.tertiaryGrey,
+                  ),
+                ),
+                filled: true,
+                labelText: 'What are you interested in?',
+                labelStyle: Theme.of(context).textTheme.bodyLarge,
+                focusColor: Colors.white,
+                fillColor: ColorPalette.surface,
               ),
-            ],
-          ),
-          GradientOutlineButton(
-            onPressed: () async {
-              if (validateFormFields(viewModel)) {
-                await viewModel.onSendTap();
-              }
-            },
-            title: "Send",
-            width: 150,
-          ),
-        ],
+              dropdownColor: Colors.white,
+              elevation: 1,
+              icon: const Icon(
+                CupertinoIcons.chevron_down,
+                size: 18,
+              ),
+              style: Theme.of(context).textTheme.bodyMedium,
+              value: viewModel.serviceValue,
+              onChanged: (value) {
+                viewModel.setService(value!);
+              },
+              items: ServiceValueToTitleMap.keys
+                  .map(
+                    (value) => DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(ServiceValueToTitleMap[value]!),
+                    ),
+                  )
+                  .toList(),
+            ),
+            UIHelper.verticalSpaceSmall(),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextArea(
+                    textEditingController: messageController,
+                    focusNode: messageFocusNode,
+                    hintText: "Let me know a little about your project...",
+                    maxLines: 8,
+                    title: "Message",
+                    validationMessage: viewModel.messageValidationMessage,
+                  ),
+                ),
+              ],
+            ),
+            UIHelper.verticalSpaceSmall(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 25,
+                  child: Opacity(
+                    opacity: 0,
+                    child: Checkbox(
+                      value: viewModel.isHoneypotChecked,
+                      onChanged: (value) {
+                        viewModel.onChangehoneypotCheck(value);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            GradientOutlineButton(
+              onPressed: () async {
+                if (validateFormFields(viewModel)) {
+                  await viewModel.onSendTap();
+                }
+              },
+              title: "Send",
+              width: 150,
+            ),
+          ],
+        ),
       ),
     );
   }
