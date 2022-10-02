@@ -199,12 +199,16 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
   Widget build(BuildContext context, ExperienceViewModel viewModel) {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 450.0,
+        height: 400.0,
+        viewportFraction: 1.0,
+        autoPlay: true,
+        pauseAutoPlayOnTouch: true,
       ),
       itemCount: ProjectConstants.projects.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
         Project project = ProjectConstants.projects[itemIndex];
         return Container(
+          width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
@@ -212,9 +216,9 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                 color: ColorPalette.primary,
               )),
           margin: const EdgeInsets.only(
-            bottom: 20,
-            right: 20,
-            left: 20,
+            bottom: 10,
+            right: 10,
+            left: 10,
           ),
           padding: const EdgeInsets.all(30),
           child: Column(
@@ -294,8 +298,7 @@ class TechnologiesSection extends ViewModelWidget<ExperienceViewModel> {
 
   @override
   Widget build(BuildContext context, ExperienceViewModel viewModel) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Wrap(
       children: techImage(technologies, context),
     );
   }

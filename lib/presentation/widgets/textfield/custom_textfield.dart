@@ -9,7 +9,7 @@ class CustomTextfield extends StatelessWidget {
     required this.focusNode,
     this.keyboardType = TextInputType.text,
     required this.hintText,
-    this.maxWidth = double.infinity,
+    this.width = double.infinity,
     this.obscureText = false,
     this.maxLines,
     required this.title,
@@ -20,7 +20,7 @@ class CustomTextfield extends StatelessWidget {
   final FocusNode focusNode;
   final TextInputType keyboardType;
   final String hintText;
-  final double maxWidth;
+  final double width;
   final bool obscureText;
   final int? maxLines;
   final String title;
@@ -28,53 +28,46 @@ class CustomTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: maxWidth,
-          maxHeight: 100,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            UIHelper.verticalSpaceSmall(),
-            Expanded(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  enabled: true,
-                  border: const OutlineInputBorder(),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: ColorPalette.tertiaryGrey,
-                    ),
-                  ),
-                  hintText: hintText,
+    return SizedBox(
+      width: width,
+      height: 70,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              enabled: true,
+              border: const OutlineInputBorder(),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: ColorPalette.tertiaryGrey,
                 ),
-                controller: textEditingController,
-                keyboardType: keyboardType,
-                focusNode: focusNode,
-                obscureText: obscureText,
-                maxLines: maxLines,
               ),
+              hintText: hintText,
             ),
-            validationMessage != null
-                ? Flexible(
-                    flex: 0,
-                    child: Text(
-                      validationMessage!,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall
-                          ?.copyWith(color: ColorPalette.error),
-                    ),
-                  )
-                : Container()
-          ],
-        ));
+            style: Theme.of(context).textTheme.bodyLarge,
+            controller: textEditingController,
+            keyboardType: keyboardType,
+            focusNode: focusNode,
+            obscureText: obscureText,
+            maxLines: maxLines,
+          ),
+          validationMessage != null
+              ? Flexible(
+                  flex: 0,
+                  child: Text(
+                    validationMessage!,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(color: ColorPalette.error),
+                  ),
+                )
+              : Container()
+        ],
+      ),
+    );
   }
 }
 
