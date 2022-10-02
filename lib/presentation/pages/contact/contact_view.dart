@@ -215,6 +215,7 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
             ],
           ),
           GradientOutlineButton(
+            isLoading: viewModel.isBusy,
             onPressed: () async {
               if (validateFormFields(viewModel)) {
                 await viewModel.onSendTap();
@@ -354,6 +355,7 @@ class ContactViewMobile extends ViewModelWidget<ContactViewModel> {
               ],
             ),
             GradientOutlineButton(
+              isLoading: viewModel.isBusy,
               onPressed: () async {
                 if (validateFormFields(viewModel)) {
                   await viewModel.onSendTap();

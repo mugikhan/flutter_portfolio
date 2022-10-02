@@ -14,9 +14,19 @@ class HttpServiceImpl implements HttpService {
   final _log = getLogger('HttpServiceImpl');
 
   final Dio dio = Dio()
+    ..options.baseUrl =
+        "https://li26aztkmi.execute-api.af-south-1.amazonaws.com/portfolio"
     ..options.connectTimeout = 60000
     ..options.sendTimeout = 60000
-    ..options.receiveTimeout = 60000;
+    ..options.receiveTimeout = 60000
+    ..options.headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Headers": "X-Requested-With,content-type",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+      "Accept": "*/*"
+    }
+    ..options.contentType = "application/json";
 
   @override
   Future<dynamic> getHttp(String url,
@@ -30,10 +40,6 @@ class HttpServiceImpl implements HttpService {
       response = await dio.get(
         fullRoute,
         queryParameters: queryParams,
-        options: Options(
-          headers: headers,
-          contentType: 'application/json',
-        ),
       );
     } on DioError catch (e) {
       _log.d('HttpService: Failed to GET ${e}');
@@ -61,10 +67,6 @@ class HttpServiceImpl implements HttpService {
         data: body,
         // onSendProgress: network_utils.showLoadingProgress,
         // onReceiveProgress: network_utils.showLoadingProgress,
-        options: Options(
-          headers: headers,
-          contentType: 'application/json',
-        ),
       );
     } on DioError catch (e) {
       _log.d('HttpService: Failed to POST ${e.toString()}');
@@ -85,9 +87,6 @@ class HttpServiceImpl implements HttpService {
       final fullRoute = Uri.encodeFull('$url');
       response = await dio.delete(
         fullRoute,
-        options: Options(
-          headers: headers,
-        ),
       );
     } on DioError catch (e) {
       _log.d('HttpService: Failed to DELETE $e');
