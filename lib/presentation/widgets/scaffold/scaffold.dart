@@ -168,7 +168,7 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
         PrimaryTextButton(
           title: "Resume",
           width: 100,
-          onPressed: () {},
+          onPressed: viewModel.onResumeTap,
         ),
         const SizedBox(
           width: 25,
