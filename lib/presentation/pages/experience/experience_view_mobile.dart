@@ -207,39 +207,39 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
       itemCount: ProjectConstants.projects.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
         Project project = ProjectConstants.projects[itemIndex];
-        return Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(
-                color: ColorPalette.primary,
-              )),
-          margin: const EdgeInsets.only(
-            bottom: 10,
-            right: 10,
-            left: 10,
-          ),
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    webAssetImage(project.appPhotos),
-                    width: 70,
-                    height: 70,
-                  ),
+        return SizedBox.expand(
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              gradient: const LinearGradient(
+                colors: [
+                  Color(0xFFB73FE0),
+                  Color(0xFFDB20DB),
+                  Color(0xFFB73FE0),
+                  Color(0xFF8867E8),
+                  Color(0xFF6E78E6),
+                  Color(0xFF27BAF7),
                 ],
               ),
-              UIHelper.horizontalSpaceSmall(),
-              Expanded(
+            ),
+            child: Card(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Image.asset(
+                      project.appPhotos,
+                      width: 80,
+                      height: 80,
+                    ),
+                    UIHelper.horizontalSpaceSmall(),
                     Flexible(
                       child: Text(
                         project.title,
@@ -279,8 +279,8 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                     ),
                   ],
                 ),
-              )
-            ],
+              ),
+            ),
           ),
         );
       },
@@ -309,9 +309,9 @@ class TechnologiesSection extends ViewModelWidget<ExperienceViewModel> {
     for (MapEntry<String, String> technology in technologies.entries) {
       list.add(
         Container(
-          margin: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 4.0),
           width: 25,
-          child: Image.asset(webAssetImage("assets/${technology.value}")),
+          child: Image.asset(technology.value),
         ),
       );
     }

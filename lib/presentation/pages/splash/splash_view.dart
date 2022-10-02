@@ -44,10 +44,11 @@ class SplashView extends StatelessWidget {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: ExactAssetImage(
-                        webAssetImage('assets/background-work.jpg')),
+                      'assets/background-work.jpg',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
