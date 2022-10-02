@@ -1,12 +1,12 @@
-enum ApiEndpoints { login, articles }
+enum ApiEndpoints { contact, resume }
 
 extension ApiEndpointExtension on ApiEndpoints {
   String get path {
     switch (this) {
-      case ApiEndpoints.login:
-        return "http://127.0.0.1:8080/auth/login";
-      case ApiEndpoints.articles:
-        return "http://127.0.0.1:8080/articles";
+      case ApiEndpoints.contact:
+        return "https://li26aztkmi.execute-api.af-south-1.amazonaws.com/portfolio/portfolio-contact-form";
+      case ApiEndpoints.resume:
+        return "https://li26aztkmi.execute-api.af-south-1.amazonaws.com/portfolio/portfolio-resume";
     }
   }
 }

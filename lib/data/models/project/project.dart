@@ -26,22 +26,22 @@ class ProjectConstants {
       title: "Autopal",
       description:
           "South Africa's most powerful search engine for new and used cars",
-      appPhotos: "autopal.png",
+      appPhotos: "assets/autopal.png",
       projectLink: "https://autopal.co.za/about/index.html",
-      techUsed: {"Flutter": "flutter.png"},
+      techUsed: {"Flutter": "assets/flutter.png"},
       buttonText: "Website",
     ),
     const Project(
       project: "Findafunder website",
       title: "Findafunder",
       description: "Broader, Accessible funding",
-      appPhotos: "findafunder.png",
+      appPhotos: "assets/findafunder.png",
       projectLink:
           "https://web.archive.org/web/20211119111656/https://www.findafunder.co.za/",
       techUsed: {
-        "Javascript": "javascript.png",
-        "AWS": "aws.png",
-        "MySQL": "mysql.png"
+        "Javascript": "assets/javascript.png",
+        "AWS": "assets/aws.png",
+        "MySQL": "assets/mysql.png"
       },
       buttonText: "Website",
     ),

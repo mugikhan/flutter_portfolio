@@ -135,10 +135,11 @@ class TitleSection extends ViewModelWidget<HomeViewModel> {
                             blurRadius: 5, color: Colors.black, spreadRadius: 2)
                       ],
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 200.0,
                       backgroundImage: ExactAssetImage(
-                          webAssetImage("assets/background-notebook.jpg")),
+                        "assets/background-notebook.jpg",
+                      ),
                     ),
                   ),
                 ),
@@ -226,7 +227,8 @@ class TitleSectionMobile extends ViewModelWidget<HomeViewModel> {
           child: CircleAvatar(
             radius: 100.0,
             backgroundImage: ExactAssetImage(
-                webAssetImage("assets/background-notebook.jpg")),
+              "assets/background-notebook.jpg",
+            ),
           ),
         ),
       ],
@@ -323,10 +325,9 @@ class AboutSection extends ViewModelWidget<HomeViewModel> {
                   BoxShadow(blurRadius: 5, color: Colors.black, spreadRadius: 2)
                 ],
               ),
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 radius: 200.0,
-                backgroundImage:
-                    ExactAssetImage(webAssetImage("assets/mugi.png")),
+                backgroundImage: ExactAssetImage("assets/mugi.png"),
               ),
             ),
           ),
@@ -396,9 +397,9 @@ class AboutSectionMobile extends ViewModelWidget<HomeViewModel> {
               BoxShadow(blurRadius: 5, color: Colors.black, spreadRadius: 2)
             ],
           ),
-          child: CircleAvatar(
+          child: const CircleAvatar(
             radius: 100.0,
-            backgroundImage: ExactAssetImage(webAssetImage("assets/mugi.png")),
+            backgroundImage: ExactAssetImage("assets/mugi.png"),
           ),
         ),
         const SizedBox(

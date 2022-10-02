@@ -29,7 +29,7 @@ class PrimaryScaffold extends StatelessWidget {
               leading: GestureDetector(
                 onTap: () => viewModel.navigateToHome(),
                 child: Image.asset(
-                  webAssetImage("assets/logo-background.png"),
+                  "assets/logo-background.png",
                   fit: BoxFit.contain,
                 ),
               ),
@@ -50,7 +50,7 @@ class PrimaryScaffold extends StatelessWidget {
                     viewModel.navigateToHome();
                   },
                   child: Image.asset(
-                    webAssetImage("assets/logo-background.png"),
+                    "assets/logo-background.png",
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -168,7 +168,7 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
         PrimaryTextButton(
           title: "Resume",
           width: 100,
-          onPressed: () {},
+          onPressed: viewModel.onResumeTap,
         ),
         const SizedBox(
           width: 25,

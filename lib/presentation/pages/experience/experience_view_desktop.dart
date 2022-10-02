@@ -210,71 +210,86 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
         return Container(
           height: 250,
           width: double.infinity,
+          margin: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(
-                color: ColorPalette.primary,
-              )),
-          margin: const EdgeInsets.only(
-            bottom: 20,
-            right: 20,
-            left: 20,
+            borderRadius: BorderRadius.circular(8),
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFFB73FE0),
+                Color(0xFFDB20DB),
+                Color(0xFFB73FE0),
+                Color(0xFF8867E8),
+                Color(0xFF6E78E6),
+                Color(0xFF27BAF7),
+              ],
+            ),
           ),
-          padding: const EdgeInsets.all(30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                webAssetImage(project.appPhotos),
-                width: 350,
-                height: 250,
+          child: Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    project.appPhotos,
+                    width: 350,
+                    height: 250,
+                  ),
+                  UIHelper.horizontalSpaceLarge(),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            project.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
+                        UIHelper.verticalSpaceMedium(),
+                        Flexible(
+                          child: Text(
+                            project.description,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ),
+                        UIHelper.verticalSpaceMedium(),
+                        Flexible(
+                          child: Text(
+                            "Technologies used",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        UIHelper.verticalSpaceSmall(),
+                        TechnologiesSection(
+                          technologies: project.techUsed,
+                        ),
+                        UIHelper.verticalSpaceSmall(),
+                        GradientOutlineButton(
+                          onPressed: () async {
+                            await viewModel.onLinkTap(project.projectLink);
+                          },
+                          title: project.buttonText ?? "Coming soon",
+                          width: 150,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              UIHelper.horizontalSpaceLarge(),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        project.title,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ),
-                    UIHelper.verticalSpaceMedium(),
-                    Flexible(
-                      child: Text(
-                        project.description,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
-                    UIHelper.verticalSpaceMedium(),
-                    Flexible(
-                      child: Text(
-                        "Technologies used",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    UIHelper.verticalSpaceSmall(),
-                    TechnologiesSection(
-                      technologies: project.techUsed,
-                    ),
-                    UIHelper.verticalSpaceSmall(),
-                    GradientOutlineButton(
-                      onPressed: () async {
-                        await viewModel.onLinkTap(project.projectLink);
-                      },
-                      title: project.buttonText ?? "Coming soon",
-                      width: 150,
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
           ),
         );
       },
@@ -306,7 +321,7 @@ class TechnologiesSection extends ViewModelWidget<ExperienceViewModel> {
         Container(
           margin: const EdgeInsets.all(8.0),
           width: 50,
-          child: Image.asset(webAssetImage("assets/${technology.value}")),
+          child: Image.asset(technology.value),
         ),
       );
     }
