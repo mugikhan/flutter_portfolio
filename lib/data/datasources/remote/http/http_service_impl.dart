@@ -19,13 +19,6 @@ class HttpServiceImpl implements HttpService {
     ..options.connectTimeout = 60000
     ..options.sendTimeout = 60000
     ..options.receiveTimeout = 60000
-    ..options.headers = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Headers": "X-Requested-With,content-type",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-      "Accept": "*/*"
-    }
     ..options.contentType = "application/json";
 
   @override

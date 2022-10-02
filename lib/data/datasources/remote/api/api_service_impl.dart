@@ -12,19 +12,26 @@ class ApiServiceImpl implements ApiService {
 
   @override
   Future<dynamic> sendEmail(Email email) async {
-    var response = await _httpService.postHttp(
-      ApiEndpoints.contact.path,
-      body: email.toJson(),
-    );
-    print("Response: $response");
+    try {
+      var response = await _httpService.postHttp(
+        ApiEndpoints.contact.path,
+        body: email.toJson(),
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
   Future<dynamic> downloadResume() async {
-    var response = await _httpService.getHttp(
-      ApiEndpoints.resume.path,
-    );
-    print("Response: $response");
-    return response;
+    try {
+      var response = await _httpService.getHttp(
+        ApiEndpoints.resume.path,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
