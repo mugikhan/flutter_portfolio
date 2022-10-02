@@ -1,9 +1,9 @@
 import 'package:flutter_portfolio/app/app.locator.dart';
-import 'package:flutter_portfolio/data/constants/snackbar_type.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/recaptcha/recaptcha_service.dart';
 import 'package:flutter_portfolio/data/models/email/email.dart';
-import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
+import 'package:flutter_portfolio/data/models/enums/snackbar_type.dart';
+import 'package:flutter_portfolio/data/models/lambda_response/lambda_response.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -34,18 +34,29 @@ class ContactViewModel extends FormViewModel {
         service: ServiceValueToTitleMap[serviceValue!]!,
         message: messageValue!,
       );
-      await apiService.sendEmail(email);
-      setBusy(false);
-      await _snackbarService.showCustomSnackBar(
-        variant: SnackbarType.success,
-        message: "Your email has been sent!",
-      );
+      try {
+        SendEmailLambdaResponse sendEmailLambdaResponse =
+            SendEmailLambdaResponse.fromJson(await apiService.sendEmail(email));
+        await _snackbarService.showCustomSnackBar(
+          variant: SnackbarType.success,
+          message: sendEmailLambdaResponse.body,
+        );
+        setBusy(false);
+      } catch (e) {
+        setBusy(false);
+        showErrorSnackbar(
+            message: "Something went wrong while sending your email");
+      }
     } else {
       setBusy(false);
-      await _snackbarService.showCustomSnackBar(
-        variant: SnackbarType.error,
-        message: "Bots not allowed!",
-      );
+      showErrorSnackbar();
     }
+  }
+
+  Future<void> showErrorSnackbar({String? message}) async {
+    await _snackbarService.showCustomSnackBar(
+      variant: SnackbarType.error,
+      message: message ?? "Bots not allowed!",
+    );
   }
 }

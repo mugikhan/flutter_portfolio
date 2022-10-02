@@ -31,13 +31,35 @@ class ScaffoldViewModel extends BaseViewModel {
     _navigationService.navigateToContactView();
   }
 
+  void download(List<int> bytes, {String? downloadName}) {
+    // Encode our file in base64
+    final base64 = base64Encode(bytes);
+    // Create the link with the file
+    final anchor =
+        AnchorElement(href: 'data:application/octet-stream;base64,$base64')
+          ..target = 'blank';
+    if (downloadName != null) {
+      anchor.download = downloadName;
+    }
+    document.body?.append(anchor);
+    anchor.click();
+    anchor.remove();
+    return;
+  }
+
   Future<void> onResumeTap() async {
-    FetchResumeLambdaResponse response =
-        FetchResumeLambdaResponse.fromJson(await _apiService.downloadResume());
-    if (response.statusCode == 200) {
-      launchUrl(Uri.parse(
-          "data:application/octet-stream;base64,${base64Encode(response.data)}"));
-    } else {
+    try {
+      FetchResumeLambdaResponse response = FetchResumeLambdaResponse.fromJson(
+          await _apiService.downloadResume());
+      if (response.statusCode == 200) {
+        download(response.body, downloadName: "resume.pdf");
+      } else {
+        await _snackbarService.showCustomSnackBar(
+          variant: SnackbarType.error,
+          message: "Failed to download file",
+        );
+      }
+    } catch (e) {
       await _snackbarService.showCustomSnackBar(
         variant: SnackbarType.error,
         message: "Failed to download file",
