@@ -4,25 +4,33 @@
 // StackedRouterGenerator
 // **************************************************************************
 
-// ignore_for_file: public_member_api_docs, unused_import, non_constant_identifier_names
-
-import 'package:flutter/foundation.dart';
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/foundation.dart' as _i7;
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-
-import '../presentation/pages/contact/contact_view.dart';
-import '../presentation/pages/experience/experience_view.dart';
-import '../presentation/pages/home/home_view.dart';
-import '../presentation/pages/services/services_view.dart';
-import '../presentation/pages/splash/splash_view.dart';
+import 'package:flutter_portfolio/presentation/pages/contact/contact_view.dart'
+    as _i6;
+import 'package:flutter_portfolio/presentation/pages/experience/experience_view.dart'
+    as _i5;
+import 'package:flutter_portfolio/presentation/pages/home/home_view.dart'
+    as _i3;
+import 'package:flutter_portfolio/presentation/pages/services/services_view.dart'
+    as _i4;
+import 'package:flutter_portfolio/presentation/pages/splash/splash_view.dart'
+    as _i2;
+import 'package:stacked/stacked.dart' as _i1;
+import 'package:stacked_services/stacked_services.dart' as _i8;
 
 class Routes {
-  static const String splashView = '/';
-  static const String homeView = '/home';
-  static const String servicesView = '/services';
-  static const String experienceView = '/experience';
-  static const String contactView = '/contact';
+  static const splashView = '/';
+
+  static const homeView = '/home';
+
+  static const servicesView = '/services';
+
+  static const experienceView = '/experience';
+
+  static const contactView = '/contact';
+
   static const all = <String>{
     splashView,
     homeView,
@@ -32,149 +40,148 @@ class Routes {
   };
 }
 
-class StackedRouter extends RouterBase {
-  @override
-  List<RouteDef> get routes => _routes;
-  final _routes = <RouteDef>[
-    RouteDef(Routes.splashView, page: SplashView),
-    RouteDef(Routes.homeView, page: HomeView),
-    RouteDef(Routes.servicesView, page: ServicesView),
-    RouteDef(Routes.experienceView, page: ExperienceView),
-    RouteDef(Routes.contactView, page: ContactView),
+class StackedRouter extends _i1.RouterBase {
+  final _routes = <_i1.RouteDef>[
+    _i1.RouteDef(
+      Routes.splashView,
+      page: _i2.SplashView,
+    ),
+    _i1.RouteDef(
+      Routes.homeView,
+      page: _i3.HomeView,
+    ),
+    _i1.RouteDef(
+      Routes.servicesView,
+      page: _i4.ServicesView,
+    ),
+    _i1.RouteDef(
+      Routes.experienceView,
+      page: _i5.ExperienceView,
+    ),
+    _i1.RouteDef(
+      Routes.contactView,
+      page: _i6.ContactView,
+    ),
   ];
-  @override
-  Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
-  final _pagesMap = <Type, StackedRouteFactory>{
-    SplashView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const SplashView(),
+
+  final _pagesMap = <Type, _i1.StackedRouteFactory>{
+    _i2.SplashView: (data) {
+      return _i1.buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const _i2.SplashView(),
         settings: data,
       );
     },
-    HomeView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const HomeView(),
+    _i3.HomeView: (data) {
+      return _i1.buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const _i3.HomeView(),
         settings: data,
       );
     },
-    ServicesView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const ServicesView(),
+    _i4.ServicesView: (data) {
+      return _i1.buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const _i4.ServicesView(),
         settings: data,
       );
     },
-    ExperienceView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const ExperienceView(),
+    _i5.ExperienceView: (data) {
+      return _i1.buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const _i5.ExperienceView(),
         settings: data,
       );
     },
-    ContactView: (data) {
-      var args = data.getArgs<ContactViewArguments>(
-        orElse: () => ContactViewArguments(),
+    _i6.ContactView: (data) {
+      final args = data.getArgs<ContactViewArguments>(
+        orElse: () => const ContactViewArguments(),
       );
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => ContactView(key: args.key),
+      return _i1.buildAdaptivePageRoute<dynamic>(
+        builder: (context) => _i6.ContactView(key: args.key),
         settings: data,
       );
     },
   };
+
+  @override
+  List<_i1.RouteDef> get routes => _routes;
+  @override
+  Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-/// ************************************************************************
-/// Arguments holder classes
-/// *************************************************************************
-
-/// ContactView arguments holder class
 class ContactViewArguments {
-  final Key? key;
-  ContactViewArguments({this.key});
+  const ContactViewArguments({this.key});
+
+  final _i7.Key? key;
 }
 
-/// ************************************************************************
-/// Extension for strongly typed navigation
-/// *************************************************************************
-
-extension NavigatorStateExtension on NavigationService {
-  Future<dynamic> navigateToSplashView({
+extension NavigatorStateExtension on _i8.NavigationService {
+  Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
-    return navigateTo(
-      Routes.splashView,
-      id: routerId,
-      preventDuplicates: preventDuplicates,
-      parameters: parameters,
-      transition: transition,
-    );
+  ]) async {
+    return navigateTo<dynamic>(Routes.splashView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
   }
 
-  Future<dynamic> navigateToHomeView({
+  Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
-    return navigateTo(
-      Routes.homeView,
-      id: routerId,
-      preventDuplicates: preventDuplicates,
-      parameters: parameters,
-      transition: transition,
-    );
+  ]) async {
+    return navigateTo<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
   }
 
-  Future<dynamic> navigateToServicesView({
+  Future<dynamic> navigateToServicesView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
-    return navigateTo(
-      Routes.servicesView,
-      id: routerId,
-      preventDuplicates: preventDuplicates,
-      parameters: parameters,
-      transition: transition,
-    );
+  ]) async {
+    return navigateTo<dynamic>(Routes.servicesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
   }
 
-  Future<dynamic> navigateToExperienceView({
+  Future<dynamic> navigateToExperienceView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
-    return navigateTo(
-      Routes.experienceView,
-      id: routerId,
-      preventDuplicates: preventDuplicates,
-      parameters: parameters,
-      transition: transition,
-    );
+  ]) async {
+    return navigateTo<dynamic>(Routes.experienceView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
   }
 
   Future<dynamic> navigateToContactView({
-    Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   }) async {
-    return navigateTo(
-      Routes.contactView,
-      arguments: ContactViewArguments(key: key),
-      id: routerId,
-      preventDuplicates: preventDuplicates,
-      parameters: parameters,
-      transition: transition,
-    );
+    return navigateTo<dynamic>(Routes.contactView,
+        arguments: ContactViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
   }
 }

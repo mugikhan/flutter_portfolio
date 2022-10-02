@@ -1,4 +1,5 @@
 import 'package:flutter_portfolio/app/app.locator.dart';
+import 'package:flutter_portfolio/data/constants/snackbar_type.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/recaptcha/recaptcha_service.dart';
 import 'package:flutter_portfolio/data/models/email/email.dart';
@@ -12,6 +13,7 @@ class ContactViewModel extends FormViewModel {
   final recaptchaService = locator<RecaptchaService>();
   final dialogService = locator<DialogService>();
   final apiService = locator<ApiService>();
+  final _snackbarService = locator<SnackbarService>();
 
   bool isHoneypotChecked = false;
 
@@ -24,6 +26,7 @@ class ContactViewModel extends FormViewModel {
   void setFormStatus() {}
 
   Future<void> onSendTap() async {
+    setBusy(true);
     if (!isHoneypotChecked) {
       Email email = Email(
         email: emailValue!,
@@ -31,37 +34,18 @@ class ContactViewModel extends FormViewModel {
         service: serviceValue!,
         message: messageValue!,
       );
-      var response = await apiService.sendEmail(email);
-      print("Res $response");
+      await apiService.sendEmail(email);
+      setBusy(false);
+      await _snackbarService.showCustomSnackBar(
+        variant: SnackbarType.success,
+        message: "Your email has been sent!",
+      );
     } else {
-      await dialogService.showDialog(
-        title: 'Warning!',
-        description: 'Bots not allowed!',
-        dialogPlatform: DialogPlatform.Material,
-        barrierDismissible: true,
-        buttonTitleColor: ColorPalette.surface,
-        buttonTitle: "Ok",
+      setBusy(false);
+      await _snackbarService.showCustomSnackBar(
+        variant: SnackbarType.error,
+        message: "Bots not allowed!",
       );
     }
-
-    // if (isNotABot) {
-    //   Email email = Email(
-    //     email: emailValue!,
-    //     name: nameValue!,
-    //     service: serviceValue!,
-    //     message: messageValue!,
-    //   );
-    //   var response = await apiService.sendEmail(email);
-    //   print("Res $response");
-    // } else {
-    // await dialogService.showDialog(
-    //   title: 'Warning!',
-    //   description: 'Bots not allowed!',
-    //   dialogPlatform: DialogPlatform.Material,
-    //   barrierDismissible: true,
-    //   buttonTitleColor: ColorPalette.onPrimary,
-    //   buttonTitle: "Ok",
-    // );
-    // }
   }
 }

@@ -40,12 +40,14 @@ class GradientOutlineButton extends StatelessWidget {
     required this.title,
     this.width,
     this.gradient,
+    this.isLoading = false,
   }) : super(key: key);
 
   final VoidCallback onPressed;
   final String title;
   final double? width;
   final Gradient? gradient;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -59,25 +61,29 @@ class GradientOutlineButton extends StatelessWidget {
               const BorderSide(color: Colors.grey),
             ),
           ),
-      child: GradientText(
-        title,
-        gradient: gradient ??
-            const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
-              ],
+      child: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GradientText(
+              title,
+              gradient: gradient ??
+                  const LinearGradient(
+                    colors: [
+                      Color(0xFFB73FE0),
+                      Color(0xFFDB20DB),
+                      Color(0xFFB73FE0),
+                      Color(0xFF8867E8),
+                      Color(0xFF6E78E6),
+                      Color(0xFF27BAF7),
+                    ],
+                  ),
+              style: Theme.of(context)
+                  .outlinedButtonTheme
+                  .style
+                  ?.textStyle
+                  ?.resolve(MaterialState.values.toSet()),
             ),
-        style: Theme.of(context)
-            .outlinedButtonTheme
-            .style
-            ?.textStyle
-            ?.resolve(MaterialState.values.toSet()),
-      ),
     );
   }
 }
