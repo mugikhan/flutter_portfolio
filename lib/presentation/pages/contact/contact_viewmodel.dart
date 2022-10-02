@@ -13,13 +13,18 @@ class ContactViewModel extends FormViewModel {
   final dialogService = locator<DialogService>();
   final apiService = locator<ApiService>();
 
+  bool isHoneypotChecked = false;
+
+  void onChangehoneypotCheck(bool? value) {
+    isHoneypotChecked = value!;
+    notifyListeners();
+  }
+
   @override
   void setFormStatus() {}
 
   Future<void> onSendTap() async {
-    bool isNotABot = await recaptchaService.isNotABot();
-
-    if (isNotABot) {
+    if (!isHoneypotChecked) {
       Email email = Email(
         email: emailValue!,
         name: nameValue!,
@@ -34,9 +39,29 @@ class ContactViewModel extends FormViewModel {
         description: 'Bots not allowed!',
         dialogPlatform: DialogPlatform.Material,
         barrierDismissible: true,
-        buttonTitleColor: ColorPalette.onPrimary,
+        buttonTitleColor: ColorPalette.surface,
         buttonTitle: "Ok",
       );
     }
+
+    // if (isNotABot) {
+    //   Email email = Email(
+    //     email: emailValue!,
+    //     name: nameValue!,
+    //     service: serviceValue!,
+    //     message: messageValue!,
+    //   );
+    //   var response = await apiService.sendEmail(email);
+    //   print("Res $response");
+    // } else {
+    // await dialogService.showDialog(
+    //   title: 'Warning!',
+    //   description: 'Bots not allowed!',
+    //   dialogPlatform: DialogPlatform.Material,
+    //   barrierDismissible: true,
+    //   buttonTitleColor: ColorPalette.onPrimary,
+    //   buttonTitle: "Ok",
+    // );
+    // }
   }
 }

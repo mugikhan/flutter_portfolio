@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
+import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/primary_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/buttons/transparent_button.dart';
 import 'package:flutter_portfolio/presentation/widgets/scaffold/scaffold_viewmodel.dart';
@@ -19,34 +20,47 @@ class PrimaryScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.nonReactive(
+    return ViewModelBuilder<ScaffoldViewModel>.nonReactive(
       viewModelBuilder: () => ScaffoldViewModel(),
       builder: (context, viewModel, _) {
         return ScreenTypeLayout.builder(
           mobile: (BuildContext context) => Scaffold(
             appBar: AppBar(
-              leading: Image.asset(
-                webAssetImage("assets/logo-background.png"),
-                fit: BoxFit.contain,
+              leading: GestureDetector(
+                onTap: () => viewModel.navigateToHome(),
+                child: Image.asset(
+                  webAssetImage("assets/logo-background.png"),
+                  fit: BoxFit.contain,
+                ),
               ),
               leadingWidth: 150,
               title: title != null ? Text(title!) : Container(),
               titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
               actions: const [AppbarActionsMobile()],
             ),
+            backgroundColor: ColorPalette.surface,
             body: body,
           ),
           desktop: (BuildContext context) => Scaffold(
             appBar: AppBar(
-              leading: Image.asset(
-                webAssetImage("assets/logo-background.png"),
-                fit: BoxFit.contain,
+              leading: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    viewModel.navigateToHome();
+                  },
+                  child: Image.asset(
+                    webAssetImage("assets/logo-background.png"),
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
               leadingWidth: 175,
               title: title != null ? Text(title!) : Container(),
               titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
               actions: const [AppbarActionsDesktop()],
             ),
+            backgroundColor: ColorPalette.surface,
             body: Padding(
               padding: EdgeInsets.all(
                 getValueForScreenType<double>(
