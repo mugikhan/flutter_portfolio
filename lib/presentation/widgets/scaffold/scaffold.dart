@@ -28,6 +28,7 @@ class PrimaryScaffold extends StatelessWidget {
         return ScreenTypeLayout.builder(
           mobile: (BuildContext context) => Scaffold(
             appBar: AppBar(
+              elevation: 0,
               leading: GestureDetector(
                 onTap: () => viewModel.navigateToHome(),
                 child: Image.asset(

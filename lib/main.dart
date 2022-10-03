@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/app/app.router.dart';
 import 'package:flutter_portfolio/presentation/design/theme_setup.dart';
+import 'package:flutter_portfolio/presentation/widgets/dialog/setup_dialog.dart';
 import 'package:flutter_portfolio/presentation/widgets/snackbar/setup_snackbar.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,6 +16,7 @@ Future main() async {
   await ThemeManager.initialise();
   // await locator<RecaptchaService>().initiate();
   setupSnackbarUi();
+  setupDialogUi();
   runApp(const MyApp());
 }
 

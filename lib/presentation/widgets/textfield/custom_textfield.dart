@@ -44,6 +44,12 @@ class CustomTextfield extends StatelessWidget {
                   color: ColorPalette.tertiaryGrey,
                 ),
               ),
+              label: Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              labelStyle: Theme.of(context).textTheme.titleMedium,
+              floatingLabelBehavior: FloatingLabelBehavior.always,
               fillColor: ColorPalette.surface,
               filled: true,
               hintText: hintText,
@@ -106,11 +112,6 @@ class CustomTextArea extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            UIHelper.verticalSpaceSmall(),
             TextFormField(
               decoration: InputDecoration(
                 enabled: true,
@@ -120,6 +121,12 @@ class CustomTextArea extends StatelessWidget {
                     color: ColorPalette.tertiaryGrey,
                   ),
                 ),
+                label: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                labelStyle: Theme.of(context).textTheme.titleMedium,
+                floatingLabelBehavior: FloatingLabelBehavior.always,
                 fillColor: ColorPalette.surface,
                 filled: true,
                 hintText: hintText,

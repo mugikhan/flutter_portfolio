@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/app/app.locator.dart';
-import 'package:flutter_portfolio/data/models/enums/snackbar_type.dart';
+import 'package:flutter_portfolio/data/enums/snackbar_type.dart';
 import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:stacked_services/stacked_services.dart';
 

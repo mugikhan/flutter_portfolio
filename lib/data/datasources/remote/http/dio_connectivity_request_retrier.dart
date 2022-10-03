@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/data/datasources/remote/connectivity/connectivity_service.dart';
-import 'package:flutter_portfolio/data/models/enums/connectivity_status.dart';
+import 'package:flutter_portfolio/data/enums/connectivity_status.dart';
 
 class DioConnectivityRequestRetrier {
   final Dio dio;
