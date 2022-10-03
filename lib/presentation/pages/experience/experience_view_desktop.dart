@@ -36,9 +36,14 @@ class ExperienceViewDesktop extends ViewModelWidget<ExperienceViewModel> {
               builder: TimelineTileBuilder(
                 indicatorBuilder: (_, index) => const OutlinedDotIndicator(
                   borderWidth: 1.5,
+                  color: ColorPalette.primary,
                 ),
-                startConnectorBuilder: (_, index) => Connector.solidLine(),
-                endConnectorBuilder: (_, index) => Connector.solidLine(),
+                startConnectorBuilder: (_, index) => Connector.solidLine(
+                  color: const Color(0xFFDB20DB),
+                ),
+                endConnectorBuilder: (_, index) => Connector.dashedLine(
+                  color: const Color(0xFFDB20DB),
+                ),
                 itemCount: EmploymentConstants.employmentData.length,
                 contentsBuilder: (_, index) {
                   final Employment employment =
@@ -277,13 +282,16 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                           technologies: project.techUsed,
                         ),
                         UIHelper.verticalSpaceSmall(),
-                        GradientOutlineButton(
-                          onPressed: () async {
-                            await viewModel.onLinkTap(project.projectLink);
-                          },
-                          title: project.buttonText ?? "Coming soon",
-                          width: 150,
-                        ),
+                        project.projectLink.isNotEmpty
+                            ? GradientOutlineButton(
+                                onPressed: () async {
+                                  await viewModel
+                                      .onLinkTap(project.projectLink);
+                                },
+                                title: project.buttonText ?? "Coming soon",
+                                width: 150,
+                              )
+                            : Container(),
                       ],
                     ),
                   )

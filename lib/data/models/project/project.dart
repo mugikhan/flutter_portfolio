@@ -22,6 +22,21 @@ class Project with _$Project {
 class ProjectConstants {
   static List<Project> projects = [
     const Project(
+      project: "Mugikhan flutter web app",
+      title: "Mugikhan.com",
+      description: "Personal portfolio",
+      appPhotos: "assets/logo-transparent.png",
+      projectLink: "",
+      techUsed: {
+        "Flutter": "assets/flutter.png",
+        "AWS": "assets/aws.png",
+        "Lambda": "assets/lambda.png",
+        "SES": "assets/ses.png",
+        "API": "assets/api-gateway.png",
+      },
+      buttonText: "Website",
+    ),
+    const Project(
       project: "Autopal flutter app",
       title: "Autopal",
       description:

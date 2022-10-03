@@ -13,10 +13,12 @@ class PrimaryScaffold extends StatelessWidget {
     Key? key,
     this.title,
     required this.body,
+    this.padding,
   }) : super(key: key);
 
   final String? title;
   final Widget body;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -62,14 +64,15 @@ class PrimaryScaffold extends StatelessWidget {
             ),
             backgroundColor: ColorPalette.surface,
             body: Padding(
-              padding: EdgeInsets.all(
-                getValueForScreenType<double>(
-                  context: context,
-                  mobile: 8,
-                  tablet: 16,
-                  desktop: 16,
-                ),
-              ),
+              padding: padding ??
+                  EdgeInsets.all(
+                    getValueForScreenType<double>(
+                      context: context,
+                      mobile: 8,
+                      tablet: 16,
+                      desktop: 16,
+                    ),
+                  ),
               child: body,
             ),
           ),
