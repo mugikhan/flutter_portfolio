@@ -26,40 +26,46 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF1F1F1),
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.6),
-                          spreadRadius: 4,
-                          blurRadius: 2,
-                        ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GradientText(
-                          "What does a fullstack developer do?",
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        UIHelper.verticalSpaceSmall(),
-                        SelectableText(
-                          "I can help you make that website or mobile app idea a reality.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF1F1F1),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.6),
+                            spreadRadius: 4,
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: GradientText(
+                              "What does a fullstack developer do?",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                          ),
+                          UIHelper.verticalSpaceSmall(),
+                          Flexible(
+                            child: Text(
+                              "I can help you make that website or mobile app idea a reality.",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
-              UIHelper.verticalSpaceMedium(),
               const Flexible(
                 child: ServiceCard(
                   title: "Mobile App Development",

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_portfolio/data/models/enums/connectivity_status.dart';
+import 'package:flutter_portfolio/data/enums/connectivity_status.dart';
 import 'package:flutter_portfolio/data/services/stoppable_service.dart';
 
 class ConnectivityService implements StoppableService {

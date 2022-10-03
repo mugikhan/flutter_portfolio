@@ -4,7 +4,7 @@ import 'dart:html';
 import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/app/app.router.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
-import 'package:flutter_portfolio/data/models/enums/snackbar_type.dart';
+import 'package:flutter_portfolio/data/enums/snackbar_type.dart';
 import 'package:flutter_portfolio/data/models/lambda_response/lambda_response.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

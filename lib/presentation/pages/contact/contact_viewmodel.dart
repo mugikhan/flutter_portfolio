@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/datasources/remote/recaptcha/recaptcha_service.dart';
+import 'package:flutter_portfolio/data/enums/dialog_type.dart';
 import 'package:flutter_portfolio/data/models/email/email.dart';
-import 'package:flutter_portfolio/data/models/enums/snackbar_type.dart';
+import 'package:flutter_portfolio/data/enums/snackbar_type.dart';
 import 'package:flutter_portfolio/data/models/lambda_response/lambda_response.dart';
+import 'package:flutter_portfolio/presentation/widgets/dialog/setup_dialog.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -14,6 +18,8 @@ class ContactViewModel extends FormViewModel {
   final dialogService = locator<DialogService>();
   final apiService = locator<ApiService>();
   final _snackbarService = locator<SnackbarService>();
+  final _dialogService = locator<DialogService>();
+  final _navigationService = locator<NavigationService>();
 
   bool isHoneypotChecked = false;
 
@@ -25,8 +31,7 @@ class ContactViewModel extends FormViewModel {
   @override
   void setFormStatus() {}
 
-  Future<void> onSendTap() async {
-    setBusy(true);
+  Future<bool> onSendTap() async {
     if (!isHoneypotChecked) {
       Email email = Email(
         email: emailValue!,
@@ -35,21 +40,21 @@ class ContactViewModel extends FormViewModel {
         message: messageValue!,
       );
       try {
-        SendEmailLambdaResponse sendEmailLambdaResponse =
-            SendEmailLambdaResponse.fromJson(await apiService.sendEmail(email));
-        await _snackbarService.showCustomSnackBar(
-          variant: SnackbarType.success,
-          message: sendEmailLambdaResponse.body,
-        );
-        setBusy(false);
+        DialogResponse<LoadingDialogResponse> response = await _dialogService
+            .showCustomDialog<LoadingDialogResponse, LoadingDialogRequest>(
+          variant: DialogType.loading,
+          barrierDismissible: false,
+          data: LoadingDialogRequest(email: email),
+        ) as DialogResponse<LoadingDialogResponse>;
+        return true;
       } catch (e) {
-        setBusy(false);
         showErrorSnackbar(
             message: "Something went wrong while sending your email");
+        return false;
       }
     } else {
-      setBusy(false);
       showErrorSnackbar();
+      return false;
     }
   }
 
