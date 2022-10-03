@@ -13,9 +13,10 @@ class ServicesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ServicesViewModel>.nonReactive(
       builder: (context, viewModel, child) => PrimaryScaffold(
+        padding: const EdgeInsets.all(0.0),
         body: ScreenTypeLayout.builder(
-          mobile: (BuildContext context) => ServicesViewMobile(),
-          desktop: (BuildContext context) => ServicesViewDesktop(),
+          mobile: (BuildContext context) => const ServicesViewMobile(),
+          desktop: (BuildContext context) => const ServicesViewDesktop(),
         ),
       ),
       viewModelBuilder: () => ServicesViewModel(),

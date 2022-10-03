@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/data/models/employment/employment.dart';
 import 'package:flutter_portfolio/data/models/project/project.dart';
-import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
 import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
 import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:flutter_portfolio/presentation/pages/experience/experience_viewmodel.dart';
@@ -36,9 +35,14 @@ class ExperienceViewMobile extends ViewModelWidget<ExperienceViewModel> {
               builder: TimelineTileBuilder(
                 indicatorBuilder: (_, index) => const OutlinedDotIndicator(
                   borderWidth: 1.5,
+                  color: ColorPalette.primary,
                 ),
-                startConnectorBuilder: (_, index) => Connector.solidLine(),
-                endConnectorBuilder: (_, index) => Connector.solidLine(),
+                startConnectorBuilder: (_, index) => Connector.solidLine(
+                  color: const Color(0xFFDB20DB),
+                ),
+                endConnectorBuilder: (_, index) => Connector.dashedLine(
+                  color: const Color(0xFFDB20DB),
+                ),
                 itemCount: EmploymentConstants.employmentData.length,
                 contentsBuilder: (_, index) {
                   final Employment employment =
@@ -270,13 +274,15 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                       technologies: project.techUsed,
                     ),
                     UIHelper.verticalSpaceSmall(),
-                    GradientOutlineButton(
-                      onPressed: () async {
-                        await viewModel.onLinkTap(project.projectLink);
-                      },
-                      title: project.buttonText ?? "Coming soon",
-                      width: 150,
-                    ),
+                    project.projectLink.isNotEmpty
+                        ? GradientOutlineButton(
+                            onPressed: () async {
+                              await viewModel.onLinkTap(project.projectLink);
+                            },
+                            title: project.buttonText ?? "Coming soon",
+                            width: 150,
+                          )
+                        : Container(),
                   ],
                 ),
               ),

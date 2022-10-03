@@ -66,6 +66,8 @@ dependencies:
   string_validator: ^0.3.0
   g_recaptcha_v3: ^0.0.5
   hive_flutter: ^1.1.0
+  rive: ^0.9.1
+  lottie: ^1.4.3
   
 dev_dependencies:
   flutter_test:
@@ -97,6 +99,8 @@ flutter:
     - assets/
     - assets/svg/
     - assets/resume/
+    - assets/rive/
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
