@@ -44,7 +44,7 @@ class ScaffoldViewModel extends BaseViewModel {
       tapCount = 0;
       _dialogService.showCustomDialog(
           variant: DialogType.icon,
-          title: "I love you",
+          title: "For the love of my life, Ayesha",
           barrierDismissible: true,
           data: const IconDialogRequest(
             iconData: CupertinoIcons.heart_solid,
