@@ -24,9 +24,9 @@ class EmploymentConstants {
       position: "Sr. Software Engineer",
       duration: "01/2021 - Present",
       description:
-          "I joined Entelect at the start of 2021 for corporate project exposure."
-          "My focus was on full stack development but initially I was assigned to a bank as a mobile developer."
-          "I started work originally as an android developer on the banks business banking mobile application"
+          "I joined Entelect at the start of 2021 for corporate project exposure. "
+          "My focus was on full stack development but initially I was assigned to a bank as a mobile developer. "
+          "I started work originally as an android developer on the banks business banking mobile application "
           "using Backbase. The bulk of the work was on the iOS side and this resulted in me pivoting and "
           "becoming proficient in swift.",
       skills: {
