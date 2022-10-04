@@ -257,6 +257,7 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
                       child: Text(
                         project.description,
                         style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     UIHelper.verticalSpaceMedium(),

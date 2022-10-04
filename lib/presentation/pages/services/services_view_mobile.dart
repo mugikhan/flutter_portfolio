@@ -32,8 +32,15 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
                     child: Container(
                       margin: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF1F1F1).withOpacity(0.8),
+                        color: const Color(0xFFF1F1F1).withOpacity(0.7),
                         borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFFF1F1F1).withOpacity(0.6),
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                          ),
+                        ],
                       ),
                       padding: const EdgeInsets.all(8.0),
                       child: Column(

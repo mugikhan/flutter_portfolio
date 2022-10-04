@@ -180,6 +180,7 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
                                 title: "Your name",
                                 validationMessage:
                                     viewModel.nameValidationMessage,
+                                maxLines: 1,
                               ),
                             ),
                             UIHelper.horizontalSpaceMedium(),
@@ -191,6 +192,7 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
                                 title: "Your email",
                                 validationMessage:
                                     viewModel.emailValidationMessage,
+                                maxLines: 1,
                               ),
                             ),
                           ],
@@ -488,7 +490,7 @@ class ContactViewMobile extends ViewModelWidget<ContactViewModel> {
           ),
         ),
         Positioned(
-          top: 200,
+          top: (MediaQuery.of(context).size.height / 2) / 2,
           right: 4,
           left: 4,
           bottom: 20,
@@ -510,6 +512,7 @@ class ContactViewMobile extends ViewModelWidget<ContactViewModel> {
                       hintText: "Name",
                       title: "Your name",
                       validationMessage: viewModel.nameValidationMessage,
+                      maxLines: 1,
                     ),
                     UIHelper.verticalSpaceSmall(),
                     CustomTextfield(
@@ -518,6 +521,7 @@ class ContactViewMobile extends ViewModelWidget<ContactViewModel> {
                       hintText: "Email",
                       title: "Your email",
                       validationMessage: viewModel.emailValidationMessage,
+                      maxLines: 1,
                     ),
                     UIHelper.verticalSpaceSmall(),
                     DropdownButtonFormField<String>(

@@ -27,7 +27,7 @@ class ServiceCard extends StatelessWidget {
       width: width,
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F1F1).withOpacity(0.6),
+        color: const Color(0xFFF1F1F1).withOpacity(0.4),
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -46,8 +46,8 @@ class ServiceCard extends StatelessWidget {
             height: 96,
             width: 96,
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xFFDADADA).withOpacity(0.7),
+            decoration: const BoxDecoration(
+              color: Color(0xFFDADADA),
               shape: BoxShape.circle,
             ),
             child: FaIcon(

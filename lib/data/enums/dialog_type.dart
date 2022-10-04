@@ -1,2 +1,2 @@
 /// The type of dialog to show
-enum DialogType { basic, loading }
+enum DialogType { basic, loading, icon }
