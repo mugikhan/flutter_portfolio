@@ -1,11 +1,15 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/app/app.locator.dart';
 import 'package:flutter_portfolio/app/app.router.dart';
 import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
+import 'package:flutter_portfolio/data/enums/dialog_type.dart';
 import 'package:flutter_portfolio/data/enums/snackbar_type.dart';
 import 'package:flutter_portfolio/data/models/lambda_response/lambda_response.dart';
+import 'package:flutter_portfolio/presentation/widgets/dialog/setup_dialog.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,6 +18,9 @@ class ScaffoldViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _apiService = locator<ApiService>();
   final _snackbarService = locator<SnackbarService>();
+  final _dialogService = locator<DialogService>();
+
+  int tapCount = 0;
 
   void navigateToHome() {
     _navigationService.clearStackAndShow(Routes.homeView);
@@ -29,6 +36,20 @@ class ScaffoldViewModel extends BaseViewModel {
 
   void navigateToContact() {
     _navigationService.navigateToContactView();
+  }
+
+  void onFooterTap() {
+    tapCount++;
+    if (tapCount >= 7) {
+      tapCount = 0;
+      _dialogService.showCustomDialog(
+          variant: DialogType.icon,
+          title: "I love you",
+          barrierDismissible: true,
+          data: const IconDialogRequest(
+            iconData: CupertinoIcons.heart_solid,
+          ));
+    }
   }
 
   void download(List<int> bytes, {String? downloadName}) {

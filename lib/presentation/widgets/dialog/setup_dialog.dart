@@ -4,6 +4,8 @@ import 'package:flutter_portfolio/data/datasources/remote/api/api_service.dart';
 import 'package:flutter_portfolio/data/enums/dialog_type.dart';
 import 'package:flutter_portfolio/data/models/email/email.dart';
 import 'package:flutter_portfolio/data/models/lambda_response/lambda_response.dart';
+import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
+import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_animations/anicoto/animation_mixin.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -17,6 +19,8 @@ void setupDialogUi() {
     DialogType.loading: (context, sheetRequest,
             Function(DialogResponse<LoadingDialogResponse>) completer) =>
         _LoadingDialog(request: sheetRequest, completer: completer),
+    DialogType.icon: (context, sheetRequest, completer) =>
+        _IconDialog(request: sheetRequest, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);
@@ -78,6 +82,52 @@ class _BasicDialog extends StatelessWidget {
       ),
     );
   }
+}
+
+class _IconDialog extends StatelessWidget {
+  final DialogRequest request;
+  final Function(DialogResponse) completer;
+  const _IconDialog({Key? key, required this.request, required this.completer})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        height: 100,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              request.title ?? '',
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+            ),
+            UIHelper.horizontalSpaceSmall(),
+            Icon(
+              request.data?.iconData ?? Icons.clear,
+              size: 24,
+              color: ColorPalette.error,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class IconDialogRequest {
+  const IconDialogRequest({
+    required this.iconData,
+  });
+
+  final IconData iconData;
 }
 
 class _LoadingDialog extends StatefulWidget {
