@@ -107,6 +107,7 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
   Widget build(BuildContext context, ContactViewModel viewModel) {
     return Stack(
       fit: StackFit.expand,
+      alignment: Alignment.center,
       children: [
         Positioned(
           right: 0,
@@ -149,10 +150,10 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
           ),
         ),
         Positioned(
-          top: 200,
+          top: (MediaQuery.of(context).size.height / 2) / 2,
           right: 100,
           left: 100,
-          height: 600,
+          bottom: 100,
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
