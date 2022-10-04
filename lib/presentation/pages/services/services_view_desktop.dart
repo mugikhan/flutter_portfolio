@@ -24,23 +24,17 @@ class ServicesViewDesktop extends ViewModelWidget<ServicesViewModel> {
           ),
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  margin: const EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF1F1F1),
+                    color: const Color(0xFFF1F1F1).withOpacity(0.9),
                     borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.6),
-                        spreadRadius: 4,
-                        blurRadius: 2,
-                      ),
-                    ],
                   ),
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
