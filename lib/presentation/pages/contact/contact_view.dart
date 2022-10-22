@@ -120,8 +120,19 @@ class ContactViewDesktop extends ViewModelWidget<ContactViewModel> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                  color: ColorPalette.tertiary.withOpacity(0.7),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFB73FE0),
+                      Color(0xFFDB20DB),
+                      Color(0xFFB73FE0),
+                      Color(0xFF8867E8),
+                      Color(0xFF6E78E6),
+                      Color(0xFF27BAF7),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                 ),
               ),
               Positioned(
@@ -320,7 +331,6 @@ class ContactInfo extends ViewModelWidget<ContactViewModel> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        // color: ColorPalette.tertiary.withOpacity(0.8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

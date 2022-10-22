@@ -207,6 +207,7 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
         viewportFraction: 1.0,
         autoPlay: true,
         pauseAutoPlayOnTouch: true,
+        enlargeCenterPage: true,
       ),
       itemCount: ProjectConstants.projects.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
