@@ -43,6 +43,16 @@ class PrimaryScaffold extends StatelessWidget {
             ),
             backgroundColor: ColorPalette.surface,
             body: body,
+            bottomNavigationBar: GestureDetector(
+              onTap: () => viewModel.onFooterTap(),
+              child: Container(
+                height: 30,
+                alignment: Alignment.center,
+                color: ColorPalette.primaryGrey.withOpacity(0.2),
+                child: Text(
+                    "© 2022 - ${DateTime.now().year} Copyright: Mughees Khan"),
+              ),
+            ),
           ),
           desktop: (BuildContext context) => Scaffold(
             appBar: AppBar(
