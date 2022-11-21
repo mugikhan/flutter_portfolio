@@ -304,23 +304,25 @@ class AboutSection extends ViewModelWidget<HomeViewModel> {
                 const SizedBox(
                   height: 25,
                 ),
-                GradientOutlineButton(
-                  onPressed: () {
-                    viewModel.navigateToContact();
-                  },
-                  title: "Get In Touch",
-                  width: 150,
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFFB73FE0),
-                      Color(0xFFDB20DB),
-                      Color(0xFFB73FE0),
-                      Color(0xFF8867E8),
-                      Color(0xFF6E78E6),
-                      Color(0xFF27BAF7),
-                    ],
-                  ),
-                )
+                Row(
+                  children: [
+                    GradientOutlineButton(
+                      onPressed: () {
+                        viewModel.navigateToContact();
+                      },
+                      title: "Get In Touch",
+                      width: 150,
+                    ),
+                    UIHelper.horizontalSpaceMedium(),
+                    GradientOutlineButton(
+                      onPressed: () {
+                        viewModel.shareWebsite();
+                      },
+                      title: "Share",
+                      width: 150,
+                    )
+                  ],
+                ),
               ],
             ),
           ),
@@ -436,17 +438,15 @@ class AboutSectionMobile extends ViewModelWidget<HomeViewModel> {
           },
           title: "Get In Touch",
           width: 150,
-          gradient: const LinearGradient(
-            colors: [
-              Color(0xFFB73FE0),
-              Color(0xFFDB20DB),
-              Color(0xFFB73FE0),
-              Color(0xFF8867E8),
-              Color(0xFF6E78E6),
-              Color(0xFF27BAF7),
-            ],
-          ),
         ),
+        UIHelper.verticalSpaceMedium(),
+        GradientOutlineButton(
+          onPressed: () {
+            viewModel.shareWebsite();
+          },
+          title: "Share",
+          width: 150,
+        )
       ],
     );
   }
