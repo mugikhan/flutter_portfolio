@@ -15,8 +15,8 @@ class ServicesView extends StatelessWidget {
       builder: (context, viewModel, child) => PrimaryScaffold(
         padding: const EdgeInsets.all(0.0),
         body: ScreenTypeLayout.builder(
-          mobile: (BuildContext context) => const ServicesViewMobile(),
-          desktop: (BuildContext context) => const ServicesViewDesktop(),
+          mobile: (BuildContext context) => ServicesViewMobile(),
+          desktop: (BuildContext context) => ServicesViewDesktop(),
         ),
       ),
       viewModelBuilder: () => ServicesViewModel(),
