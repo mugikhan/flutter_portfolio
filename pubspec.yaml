@@ -69,6 +69,7 @@ dependencies:
   rive: ^0.9.1
   lottie: ^1.4.3
   share_plus: ^6.3.0
+  supercharged: ^2.1.1
   
 dev_dependencies:
   flutter_test:
