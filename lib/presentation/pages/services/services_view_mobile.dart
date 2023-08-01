@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/presentation/design/ui_helpers.dart';
 import 'package:flutter_portfolio/presentation/pages/services/services_viewmodel.dart';
 import 'package:flutter_portfolio/presentation/widgets/service_card/service_card.dart';
+import 'package:flutter_portfolio/presentation/widgets/technology/technology_circle.dart';
 import 'package:flutter_portfolio/presentation/widgets/text/gradient_text.dart';
 import 'package:rive/rive.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -62,57 +63,57 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
 
   @override
   Widget build(BuildContext context, ServicesViewModel viewModel) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.6),
-                            spreadRadius: 2,
-                            blurRadius: 2,
-                          ),
-                        ],
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.6),
+                        spreadRadius: 2,
+                        blurRadius: 2,
                       ),
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            child: GradientText(
-                              "What does a fullstack developer do?",
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                          ),
-                          UIHelper.verticalSpaceSmall(),
-                          Flexible(
-                            child: Text(
-                              "I can help you make that website or mobile app idea a reality.",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    ],
                   ),
-                ],
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: GradientText(
+                          "What does a fullstack developer do?",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ),
+                      UIHelper.verticalSpaceSmall(),
+                      Flexible(
+                        child: Text(
+                          "I can help you make that website or mobile app idea a reality.",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Flexible(
                 child: PlayAnimation(
                     tween: tween,
@@ -130,7 +131,7 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
                       );
                     }),
               ),
-              UIHelper.verticalSpaceMedium(),
+              UIHelper.horizontalSpaceMedium(),
               Flexible(
                 child: PlayAnimation(
                     tween: tween2,
@@ -149,7 +150,12 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
                       );
                     }),
               ),
-              UIHelper.verticalSpaceMedium(),
+            ],
+          ),
+          UIHelper.verticalSpaceMedium(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Flexible(
                 child: PlayAnimation(
                     tween: tween3,
@@ -168,7 +174,7 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
                       );
                     }),
               ),
-              UIHelper.verticalSpaceMedium(),
+              UIHelper.horizontalSpaceMedium(),
               Flexible(
                 child: PlayAnimation(
                     tween: tween4,
@@ -187,20 +193,51 @@ class ServicesViewMobile extends ViewModelWidget<ServicesViewModel> {
                       );
                     }),
               ),
-              UIHelper.verticalSpaceMedium(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: const RiveAnimation.asset(
-                  'assets/rive/tech_bounce_mobile.riv',
-                  fit: BoxFit.contain,
-                  artboard: 'flutter',
-                  stateMachines: ['Flutter State Machine'],
+            ],
+          ),
+          UIHelper.verticalSpaceMedium(),
+          Row(
+            children: [
+              UIHelper.horizontalSpaceMedium(),
+              Flexible(
+                child: Text(
+                  "MY SKILLS",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],
           ),
-        ),
-      ],
+          UIHelper.verticalSpaceSmall(),
+          Row(
+            children: [
+              UIHelper.horizontalSpaceMedium(),
+              Flexible(
+                child: Text(
+                  "Technologies.",
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+              ),
+            ],
+          ),
+          UIHelper.verticalSpaceMedium(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Wrap(
+                  alignment: WrapAlignment.start,
+                  spacing: 20,
+                  runSpacing: 20,
+                  children: [
+                    for (String tech in viewModel.technologies)
+                      TechnologyCircle(assetPath: tech)
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

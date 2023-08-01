@@ -92,3 +92,49 @@ class GradientPrimaryButton extends StatelessWidget {
     );
   }
 }
+
+class PrimaryIconButton extends StatelessWidget {
+  const PrimaryIconButton({
+    Key? key,
+    required this.onPressed,
+    required this.title,
+    this.width,
+    required this.iconData,
+  }) : super(key: key);
+
+  final VoidCallback onPressed;
+  final String title;
+  final double? width;
+  final IconData iconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
+      style: Theme.of(context).textButtonTheme.style?.copyWith(
+            fixedSize: MaterialStateProperty.all<Size>(
+              Size(width ?? double.maxFinite, 50),
+            ),
+          ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Icon(
+              iconData,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            title,
+            style: Theme.of(context)
+                .textButtonTheme
+                .style
+                ?.textStyle
+                ?.resolve(MaterialState.values.toSet()),
+          ),
+        ],
+      ),
+    );
+  }
+}

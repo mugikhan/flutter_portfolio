@@ -218,18 +218,24 @@ class ProjectsSection extends ViewModelWidget<ExperienceViewModel> {
           width: double.infinity,
           margin: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFB73FE0),
-                Color(0xFFDB20DB),
-                Color(0xFFB73FE0),
-                Color(0xFF8867E8),
-                Color(0xFF6E78E6),
-                Color(0xFF27BAF7),
-              ],
-            ),
-          ),
+              borderRadius: BorderRadius.circular(8),
+              gradient: const LinearGradient(
+                colors: [
+                  Color(0xFFB73FE0),
+                  Color(0xFFDB20DB),
+                  Color(0xFFB73FE0),
+                  Color(0xFF8867E8),
+                  Color(0xFF6E78E6),
+                  Color(0xFF27BAF7),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.8),
+                  spreadRadius: 2,
+                  blurRadius: 2,
+                ),
+              ]),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
