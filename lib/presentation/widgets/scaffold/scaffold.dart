@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/presentation/common/utils/asset_image_util.dart';
 import 'package:flutter_portfolio/presentation/design/color_pallete.dart';
@@ -144,9 +145,20 @@ class AppbarActionsMobile extends ViewModelWidget<ScaffoldViewModel> {
             ),
             PopupMenuItem(
               value: 5,
-              child: Text(
-                "Resume",
-                style: Theme.of(context).textTheme.bodyLarge,
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 8),
+                    child: Icon(
+                      CupertinoIcons.cloud_download,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    "Resume",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ],
               ),
             ),
           ],
@@ -189,10 +201,11 @@ class AppbarActionsDesktop extends ViewModelWidget<ScaffoldViewModel> {
             viewModel.navigateToContact();
           },
         ),
-        PrimaryTextButton(
+        PrimaryIconButton(
           title: "Resume",
-          width: 100,
+          width: 120,
           onPressed: viewModel.onResumeTap,
+          iconData: CupertinoIcons.cloud_download,
         ),
         const SizedBox(
           width: 25,
